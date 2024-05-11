@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 251473645359244838}
   - component: {fileID: 114391151886763446}
   m_Layer: 0
-  m_Name: recharge pad
+  m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
