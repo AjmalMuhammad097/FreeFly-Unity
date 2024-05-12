@@ -526,10 +526,11 @@ MonoBehaviour:
     type: 3}
   _superPlatformPrefab: {fileID: 114086667077390360, guid: 574196957f3e3b94ca07590b68b2e34b,
     type: 3}
-  _cameraTransform: {fileID: 519420032}
+  _camera: {fileID: 519420031}
   _initialPlatformCount: 10
-  minVerticalDistance: 1
-  maxVerticalDistance: 2.5
+  _minVerticalDistance: 1
+  _maxVerticalDistance: 2.5
+  _horizontalOffset: 0.3
 --- !u!4 &462577647
 Transform:
   m_ObjectHideFlags: 0

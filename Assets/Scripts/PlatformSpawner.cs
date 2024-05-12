@@ -6,29 +6,32 @@ public class PlatformSpawner : MonoBehaviour
 {
     [SerializeField] private PlatformBehaviour _platformPrefab;
     [SerializeField] private PlatformBehaviour _superPlatformPrefab;
-    [SerializeField] private Transform _cameraTransform;
+    [SerializeField] private Camera _camera;
     [SerializeField] private int _initialPlatformCount = 10;
-    [SerializeField] private float minVerticalDistance = 1f, maxVerticalDistance = 2.5f;
-
+    [SerializeField] private float _minVerticalDistance = 1f, _maxVerticalDistance = 2.5f;
+    [SerializeField] private float _horizontalOffset;
 
     private int indexToCheck = 5;
     private int indexToTanslate = 0;
     private float levelWidth;
-    private List<PlatformBehaviour> platformPoolerList = new();
+    private readonly List<PlatformBehaviour> platformPoolerList = new();
     private Vector2 spawnPosition;
     private bool superCharge = false;
-    private WaitForSeconds waitForSeconds = new(0.01f);
+    private readonly WaitForSeconds waitForSeconds = new(0.01f);
 
     private void Start()
     {
         spawnPosition = transform.position;
-        levelWidth = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).x - _platformPrefab.GetComponent<SpriteRenderer>().bounds.extents.x / 2f;
+        levelWidth = _camera.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).x - 
+            _platformPrefab.GetComponent<SpriteRenderer>().bounds.extents.x / 2f - 
+            _horizontalOffset;
+
         InstantiatePlatforms();
     }
 
     private void Update()
     {
-        transform.position = _cameraTransform.position;
+        transform.position = _camera.transform.position;
 
         if (indexToCheck < platformPoolerList.Count)
         {
@@ -51,7 +54,7 @@ public class PlatformSpawner : MonoBehaviour
     private void CreatePlatforms()
     {
         spawnPosition = new(0f, spawnPosition.y);
-        spawnPosition += new Vector2(Random.Range(-levelWidth, levelWidth), Random.Range(minVerticalDistance, maxVerticalDistance));
+        spawnPosition += new Vector2(Random.Range(-levelWidth, levelWidth), Random.Range(_minVerticalDistance, _maxVerticalDistance));
         PlatformBehaviour tempPlatform;
         if (!superCharge)
         {
@@ -73,7 +76,7 @@ public class PlatformSpawner : MonoBehaviour
     {
         platformPoolerList[platformIndex].transform.position = new Vector2(0f, platformPoolerList[platformIndex].transform.position.y);
         spawnPosition = new Vector2(0f, spawnPosition.y);
-        spawnPosition += new Vector2(Random.Range(-levelWidth, levelWidth), Random.Range(minVerticalDistance, maxVerticalDistance));
+        spawnPosition += new Vector2(Random.Range(-levelWidth, levelWidth), Random.Range(_minVerticalDistance, _maxVerticalDistance));
         platformPoolerList[platformIndex].transform.position = spawnPosition;
         StartCoroutine(GrowPlatformAnimation(platformPoolerList[platformIndex]));
         if (indexToTanslate < platformPoolerList.Count - 1) indexToTanslate++;
