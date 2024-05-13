@@ -6,9 +6,7 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] private float _movementSpeed = 5f;
-    [SerializeField] private float TestSpeed = 5f;
     private Rigidbody2D playerRigidBody;
-    private float movement = 0f;
 
     private PlayerInput playerInput;
     private void Awake()
