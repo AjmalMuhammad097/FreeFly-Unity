@@ -14,7 +14,7 @@ public class PlatformSpawner : MonoBehaviour
     private int indexToCheck = 5;
     private int indexToTanslate = 0;
     private float levelWidth;
-    private readonly List<PlatformBehaviour> platformPoolerList = new();
+    [SerializeField]private List<PlatformBehaviour> platformPoolerList = new();
     private Vector2 spawnPosition;
     private bool superCharge = false;
     private readonly WaitForSeconds waitForSeconds = new(0.01f);
