@@ -41,6 +41,12 @@ TagManager:
   - name: BG Particles
     uniqueID: 963603347
     locked: 0
+  - name: Background
+    uniqueID: 2230893771
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Forground
+    uniqueID: 413789881
     locked: 0
