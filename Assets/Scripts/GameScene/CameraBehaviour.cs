@@ -29,8 +29,13 @@ public class CameraBehaviour : MonoBehaviour {
 	}
 
 	private void OnCollisionEnter2D(Collision2D other){
-		if(other.gameObject.tag.Equals("Player")){
+		if(other.gameObject.tag.Equals("Player")){		//try checking with player transform
 			lostGame = true;
+            GameData gameData = new()
+            {
+                LastScore = (int)score
+            };
+            GameManager.Instance.GameOver(gameData);
 			if(score > PlayerPrefs.GetInt("bestScore")) PlayerPrefs.SetInt("bestScore",(int) score);
 			loseGame();
 		}
