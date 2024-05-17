@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.Purchasing.MiniJSON;
 
-public static class MyPlayerPrefs 
+public static class MyPlayerPrefs
 {
     public static void SetInt(string key, int value)
     {
@@ -43,6 +45,59 @@ public static class MyPlayerPrefs
     {
         return PlayerPrefs.GetInt(key, defaultValue ? 1 : 0) == 1;
     }
+
+
+    // Save a generic object as JSON using Newtonsoft.Json, fallback to Unity's JsonUtility
+    public static void SetJson<T>(string key, T value)      //Usage MyPlayerPrefs.SetJson("playerData", playerData);
+    {
+        try
+        {
+            string json = JsonConvert.SerializeObject(value);
+            PlayerPrefs.SetString(key, json);
+        }
+        catch (JsonException ex)
+        {
+            try
+            {
+                string json = JsonUtility.ToJson(value);
+                PlayerPrefs.SetString(key, json);
+                Debug.LogError($"Failed to serialize object of type {typeof(T)} using JsonConvert: {ex.Message}. Falling back to JsonUtility.");
+            }
+            catch (System.Exception fallbackEx)
+            {
+                Debug.LogError($"Failed to serialize object of type {typeof(T)} using JsonUtility: {fallbackEx.Message}");
+            }
+        }
+    }
+
+    // Retrieve a generic object from JSON using Newtonsoft.Json, fallback to Unity's JsonUtility
+    public static T GetJson<T>(string key, string defaultStringValue = default)     //Usage MyPlayerPrefs.GetJson<PlayerData>("playerData");
+    {
+        string json = PlayerPrefs.GetString(key, string.Empty);
+        if (string.IsNullOrEmpty(json))
+        {
+            json = defaultStringValue;
+        }
+
+        try
+        {
+            return JsonConvert.DeserializeObject<T>(json);
+        }
+        catch (JsonException ex)
+        {
+            Debug.LogError($"Failed to deserialize JSON to object of type {typeof(T)} using JsonConvert: {ex.Message}. Falling back to JsonUtility.");
+            try
+            {
+                return JsonUtility.FromJson<T>(json);
+            }
+            catch (System.Exception fallbackEx)
+            {
+                Debug.LogError($"Failed to deserialize JSON to object of type {typeof(T)} using JsonUtility: {fallbackEx.Message}");
+                return default;
+            }
+        }
+    }
+
 
     public static void DeleteKey(string key)
     {
