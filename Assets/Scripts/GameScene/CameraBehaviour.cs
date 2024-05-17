@@ -29,16 +29,21 @@ public class CameraBehaviour : MonoBehaviour {
 	}
 
 	private void OnCollisionEnter2D(Collision2D other){
-		if(other.gameObject.tag.Equals("Player")){		//try checking with player transform
-			lostGame = true;
+		if(other.gameObject.transform == target)
+		{
             GameData gameData = new()
             {
                 LastScore = (int)score
             };
             GameManager.Instance.GameOver(gameData);
+        }
+
+/*		if(other.gameObject.tag.Equals("Player")){		//try checking with player transform
+			lostGame = true;
+            
 			if(score > PlayerPrefs.GetInt("bestScore")) PlayerPrefs.SetInt("bestScore",(int) score);
 			loseGame();
-		}
+		}*/
 	}
 
 	private void loseGame(){

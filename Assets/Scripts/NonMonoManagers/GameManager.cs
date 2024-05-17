@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,9 +27,13 @@ public sealed class GameManager
     public bool IsGameOver { private set; get; }
     public int GetCurrentScore { private set; get; }
 
+    public event Action<GameData> OnGameOver; 
+
     public void GameOver(GameData gameData)
     {
+        this.gameData = gameData;
         IsGameOver = true;
+        OnGameOver.Invoke(this.gameData);
     }
 
     public void ResetGame()
