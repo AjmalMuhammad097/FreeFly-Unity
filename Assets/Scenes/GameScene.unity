@@ -3478,6 +3478,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1128743998}
+  - component: {fileID: 1128743999}
   m_Layer: 0
   m_Name: AsteroidEnemy
   m_TagString: Untagged
@@ -3501,6 +3502,21 @@ Transform:
   - {fileID: 399176866}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1128743999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128743997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56fa8e9dae82b840a78f13f77161be6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotateSpeed: 20
+  _explosionAnimation: {fileID: 399176867}
+  _fallSpeed: 5
 --- !u!1001 &1171039935
 PrefabInstance:
   m_ObjectHideFlags: 0
