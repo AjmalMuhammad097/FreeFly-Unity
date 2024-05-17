@@ -10,5 +10,6 @@ public class ConstantValues
     public const string BESTSCORE_PLAYERPREFS = "BestScore";
     public const string TOTALSCORE_PLAYERPREFS = "TotalScore";
 
+    public const string GAMEDATA_PLAYERPREFS = "GameData";
 
 }

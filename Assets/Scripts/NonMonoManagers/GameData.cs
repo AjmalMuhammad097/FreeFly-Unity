@@ -1,17 +1,16 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 [Serializable]
 public class GameData
 {
+    private int lastScore;
+
     public int LastScore
     {
+        get { return lastScore; }
         set
         {
-            //Might invoke event to update scores.
+            lastScore = value;
             CalculateBestScore(value);
         }
     }
@@ -20,23 +19,31 @@ public class GameData
 
     public GameData()
     {
-        LastScore = MyPlayerPrefs.GetInt(ConstantValues.LASTSCORE_PLAYERPREFS);
-        BestScore = MyPlayerPrefs.GetInt(ConstantValues.BESTSCORE_PLAYERPREFS);
-        TotalScore = MyPlayerPrefs.GetInt(ConstantValues.TOTALSCORE_PLAYERPREFS);
+        LoadGameData();
+    }
+
+
+    private void LoadGameData()
+    {
+        var loadedData = MyPlayerPrefs.GetJson<GameData>(ConstantValues.GAMEDATA_PLAYERPREFS);
+        if (loadedData != null)
+        {
+            LastScore = loadedData.LastScore;
+            BestScore = loadedData.BestScore;
+            TotalScore = loadedData.TotalScore;
+        }
     }
 
     private void CalculateBestScore(int lastScore)
     {
         TotalScore += lastScore;
-        LastScore = lastScore;
+        this.lastScore = lastScore;
 
         if (lastScore > BestScore)
         {
             BestScore = lastScore;
-            MyPlayerPrefs.SetInt(ConstantValues.BESTSCORE_PLAYERPREFS, lastScore);
         }
 
-        MyPlayerPrefs.SetInt(ConstantValues.LASTSCORE_PLAYERPREFS, lastScore);
-        MyPlayerPrefs.SetInt(ConstantValues.TOTALSCORE_PLAYERPREFS, TotalScore);
+        MyPlayerPrefs.SetJson<GameData>(ConstantValues.GAMEDATA_PLAYERPREFS, this);
     }
 }
