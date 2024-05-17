@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -77,13 +78,17 @@ public static class MyPlayerPrefs
         if (string.IsNullOrEmpty(json))
         {
             json = defaultStringValue;
+            if (string.IsNullOrEmpty(json))
+            {
+                return default;
+            }
         }
 
         try
         {
             return JsonConvert.DeserializeObject<T>(json);
         }
-        catch (JsonException ex)
+        catch (Exception ex)
         {
             Debug.LogError($"Failed to deserialize JSON to object of type {typeof(T)} using JsonConvert: {ex.Message}. Falling back to JsonUtility.");
             try
