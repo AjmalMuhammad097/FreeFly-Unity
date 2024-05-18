@@ -17,11 +17,10 @@ public class GameData
     public int BestScore { get; private set; }
     public int TotalScore { get; private set; }
 
-    public GameData()
+    public void Initialize()
     {
         LoadGameData();
     }
-
 
     private void LoadGameData()
     {
