@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
-using UnityEngine.Purchasing.MiniJSON;
 
 public static class MyPlayerPrefs
 {
@@ -58,16 +57,9 @@ public static class MyPlayerPrefs
         }
         catch (JsonException ex)
         {
-            try
-            {
-                string json = JsonUtility.ToJson(value);
-                PlayerPrefs.SetString(key, json);
-                Debug.LogError($"Failed to serialize object of type {typeof(T)} using JsonConvert: {ex.Message}. Falling back to JsonUtility.");
-            }
-            catch (System.Exception fallbackEx)
-            {
-                Debug.LogError($"Failed to serialize object of type {typeof(T)} using JsonUtility: {fallbackEx.Message}");
-            }
+
+            Debug.LogError($"Failed to serialize object of type {typeof(T)} using JsonUtility: {ex.Message}");
+
         }
     }
 
@@ -90,16 +82,10 @@ public static class MyPlayerPrefs
         }
         catch (Exception ex)
         {
-            Debug.LogError($"Failed to deserialize JSON to object of type {typeof(T)} using JsonConvert: {ex.Message}. Falling back to JsonUtility.");
-            try
-            {
-                return JsonUtility.FromJson<T>(json);
-            }
-            catch (System.Exception fallbackEx)
-            {
-                Debug.LogError($"Failed to deserialize JSON to object of type {typeof(T)} using JsonUtility: {fallbackEx.Message}");
-                return default;
-            }
+
+            Debug.LogError($"Failed to deserialize JSON to object of type {typeof(T)} using JsonUtility: {ex.Message}");
+            return default;
+
         }
     }
 
