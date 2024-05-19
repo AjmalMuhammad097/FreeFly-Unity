@@ -2139,6 +2139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 462577647}
   - component: {fileID: 462577646}
+  - component: {fileID: 462577648}
   m_Layer: 0
   m_Name: PlatformSpawner
   m_TagString: Untagged
@@ -2164,8 +2165,8 @@ MonoBehaviour:
     type: 3}
   _camera: {fileID: 519420031}
   _initialPlatformCount: 10
-  _minVerticalDistance: 1
-  _maxVerticalDistance: 2.5
+  _minVerticalDistance: 1.5
+  _maxVerticalDistance: 2
   _horizontalOffset: 0.3
   platformPoolerList: []
 --- !u!4 &462577647
@@ -2183,6 +2184,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &462577648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462577645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25129d23dd71b24e8746a32bb09fd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _asteroidPrefab: {fileID: 1128743999}
+  _camera: {fileID: 519420031}
+  _minVerticalDistance: 1
+  _maxVerticalDistance: 2.5
+  _horizontalOffset: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3479,7 +3497,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1128743998}
   - component: {fileID: 1128743999}
-  - component: {fileID: 1128744000}
   m_Layer: 0
   m_Name: AsteroidEnemy
   m_TagString: Untagged
@@ -3515,36 +3532,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56fa8e9dae82b840a78f13f77161be6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotateSpeed: 20
+  _fallSpeed: 2
+  _rotateSpeed: 90
   _explosionAnimation: {fileID: 399176867}
-  _fallSpeed: 5
---- !u!50 &1128744000
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1128743997}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1001 &1171039935
 PrefabInstance:
   m_ObjectHideFlags: 0
