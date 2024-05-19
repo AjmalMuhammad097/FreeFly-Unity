@@ -12,9 +12,9 @@ public class PlatformSpawner : MonoBehaviour
     [SerializeField] private float _horizontalOffset;
 
     private int indexToCheck = 5;
-    private int indexToTanslate = 0;
+    private int indexToTranslate = 0;
     private float levelWidth;
-    [SerializeField]private List<PlatformBehaviour> platformPoolerList = new();
+    [SerializeField] private List<PlatformBehaviour> platformPoolerList = new();
     private Vector2 spawnPosition;
     private bool superCharge = false;
     private readonly WaitForSeconds waitForSeconds = new(0.01f);
@@ -22,8 +22,8 @@ public class PlatformSpawner : MonoBehaviour
     private void Start()
     {
         spawnPosition = transform.position;
-        levelWidth = _camera.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).x - 
-            _platformPrefab.GetComponent<SpriteRenderer>().bounds.extents.x / 2f - 
+        levelWidth = _camera.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).x -
+            _platformPrefab.GetComponent<SpriteRenderer>().bounds.extents.x / 2f -
             _horizontalOffset;
 
         InstantiatePlatforms();
@@ -31,13 +31,13 @@ public class PlatformSpawner : MonoBehaviour
 
     private void Update()
     {
-        transform.position = _camera.transform.position;
+        transform.position = _camera.transform.position;        //This works for the Asteroid Spawner, Its in same GameObject.
 
         if (indexToCheck < platformPoolerList.Count)
         {
             if (transform.position.y >= platformPoolerList[indexToCheck].transform.position.y)
             {
-                TranslatePlatforms(indexToTanslate);
+                TranslatePlatforms(indexToTranslate);
             }
         }
     }
@@ -53,23 +53,26 @@ public class PlatformSpawner : MonoBehaviour
 
     private void CreatePlatforms()
     {
-        spawnPosition = new(0f, spawnPosition.y);
-        spawnPosition += new Vector2(Random.Range(-levelWidth, levelWidth), Random.Range(_minVerticalDistance, _maxVerticalDistance));
+        // Create a new spawn position for each platform
+        var newSpawnPosition = new Vector2(0f, spawnPosition.y);
+        newSpawnPosition += new Vector2(Random.Range(-levelWidth, levelWidth),
+            Random.Range(_minVerticalDistance, _maxVerticalDistance));
+
         PlatformBehaviour tempPlatform;
-        if (!superCharge)
+
+        if (Random.Range(0, 3) == 0 && !superCharge)
         {
-            if (Random.Range(0, 3) == 0)
-            {
-                superCharge = true;
-                tempPlatform = Instantiate(_superPlatformPrefab, spawnPosition, Quaternion.identity);
-            }
-            else tempPlatform = Instantiate(_platformPrefab, spawnPosition, Quaternion.identity);
+            superCharge = true;
+            tempPlatform = Instantiate(_superPlatformPrefab, newSpawnPosition, Quaternion.identity);
         }
         else
         {
-            tempPlatform = Instantiate(_platformPrefab, spawnPosition, Quaternion.identity);
+            tempPlatform = Instantiate(_platformPrefab, newSpawnPosition, Quaternion.identity);
         }
         platformPoolerList.Add(tempPlatform);
+
+        // Update spawnPosition for the next platform
+        spawnPosition = newSpawnPosition;
     }
 
     private void TranslatePlatforms(int platformIndex)
@@ -84,19 +87,19 @@ public class PlatformSpawner : MonoBehaviour
         spawnPosition += new Vector2(platform.transform.position.x, Random.Range(_minVerticalDistance, _maxVerticalDistance));
 
         // Start growing platform
-        StartCoroutine(GrowPlatformAnimation(platform));
+        StartCoroutine(GrowPlatformAnimation(platform));        //This doesnt see in the screen. maybe check git.
 
         // Update indexToTranslate and indexToCheck
-        indexToTanslate = (indexToTanslate + 1) % platformPoolerList.Count;
-        indexToCheck = (indexToTanslate + 5) % platformPoolerList.Count;
+        indexToTranslate = (indexToTranslate + 1) % platformPoolerList.Count;
+        indexToCheck = (indexToTranslate + 5) % platformPoolerList.Count;
     }
 
     private IEnumerator GrowPlatformAnimation(PlatformBehaviour platform)
     {
         for (int i = 0; i <= 10; i++)
         {
-            float k = (float)i / 10;
-            platform.transform.localScale = new Vector3(k, k, k);
+            float scale = (float)i / 10;
+            platform.transform.localScale = new Vector3(scale, scale, scale);
             yield return waitForSeconds;
         }
     }
