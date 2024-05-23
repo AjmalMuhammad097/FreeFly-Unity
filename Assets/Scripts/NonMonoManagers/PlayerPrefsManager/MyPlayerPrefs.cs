@@ -55,11 +55,9 @@ public static class MyPlayerPrefs
             string json = JsonConvert.SerializeObject(value);
             PlayerPrefs.SetString(key, json);
         }
-        catch (JsonException ex)
+        catch (Exception ex)
         {
-
             Debug.LogError($"Failed to serialize object of type {typeof(T)} using JsonUtility: {ex.Message}");
-
         }
     }
 
@@ -82,10 +80,8 @@ public static class MyPlayerPrefs
         }
         catch (Exception ex)
         {
-
             Debug.LogError($"Failed to deserialize JSON to object of type {typeof(T)} using JsonUtility: {ex.Message}");
             return default;
-
         }
     }
 
