@@ -1516,7 +1516,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &383647358
 RectTransform:
@@ -4713,7 +4713,7 @@ GameObject:
   - component: {fileID: 1749538041}
   - component: {fileID: 1749538040}
   m_Layer: 5
-  m_Name: ControlCanvas
+  m_Name: HUDCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
