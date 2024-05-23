@@ -17,9 +17,8 @@ public class GameUIManager : MonoBehaviour
         _pausePanel.gameObject.SetActive(true);
     }
 
-    private void EnableGameOverPanel(GameData gameData)
+    private void EnableGameOverPanel()
     {
         _gameOverPanel.gameObject.SetActive(true);
-        _gameOverPanel.InitGameOverPanel(gameData);
     }
 }

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class GameOverPanel : MonoBehaviour
 {
-    public void InitGameOverPanel(GameData gameData)
+    private void OnEnable()
     {
-        //Initialize Texts using this game data.
-        Debug.Log($"Scores: L:{gameData.LastScore}  B:{gameData.BestScore}  T:{gameData.TotalScore}");      //This works
+       // GameManager.Instance.GameOver();        //Need to think on this logic because this should be called when the game is actually over.
+       //Here initalize panel datas
     }
 
 }

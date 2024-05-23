@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class ConstantValues
 {
+    public const int CurrentPlayerDataVersion = 1;
+
     public const string HIT_TRIGGER_ANIMATION = "Hit";
 
     public const string LASTSCORE_PLAYERPREFS = "LastScore";
     public const string BESTSCORE_PLAYERPREFS = "BestScore";
     public const string TOTALSCORE_PLAYERPREFS = "TotalScore";
 
-    public const string GAMEDATA_PLAYERPREFS = "GameData";
+    public const string PLAYERDATA_PLAYERPREFS = "PlayerData";
+    public const float SCORE_FACTOR = 15f;
 
 }

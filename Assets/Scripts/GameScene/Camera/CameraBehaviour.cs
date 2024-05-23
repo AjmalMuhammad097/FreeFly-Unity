@@ -21,8 +21,9 @@ public class CameraBehaviour : MonoBehaviour {
 			if(target.transform.position.y > transform.position.y){
 				transform.position = Vector3.Lerp(transform.position, 
 					new Vector3(transform.position.x,target.transform.position.y,transform.position.z), cameraSpeed * Time.deltaTime);
-				score += Time.deltaTime * 15f;
-				scoreText.text = "Score: "+ (int) score;
+				//score += Time.deltaTime * 15f;
+				GameManager.Instance.UpdateScore();		
+				//scoreText.text = "Score: "+ (int) score; //Implement it in other place
 			}
 		}
 
@@ -31,11 +32,7 @@ public class CameraBehaviour : MonoBehaviour {
 	private void OnCollisionEnter2D(Collision2D other){
 		if(other.gameObject.transform == target)
 		{
-            GameData gameData = new()
-            {
-                LastScore = (int)score
-            };
-            GameManager.Instance.GameOver(gameData);
+			GameManager.Instance.GameOver();
         }
 
 /*		if(other.gameObject.tag.Equals("Player")){		//try checking with player transform
