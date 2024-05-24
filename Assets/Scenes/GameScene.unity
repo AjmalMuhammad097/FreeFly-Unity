@@ -3215,6 +3215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pausePanel: {fileID: 1748845712}
   _gameOverPanel: {fileID: 1853112434}
+  _distanceText: {fileID: 403484992}
 --- !u!4 &1035240540
 Transform:
   m_ObjectHideFlags: 0

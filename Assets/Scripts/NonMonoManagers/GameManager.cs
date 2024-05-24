@@ -18,7 +18,7 @@ public sealed class GameManager
     #endregion
 
 
-    private GameDataManager gameDataManager = new();
+    public GameData GameData = new();
 
     public event Action OnGameOver;
     public bool IsGameOver { private set; get; }
@@ -29,7 +29,7 @@ public sealed class GameManager
     {
         IsGameOver = false;
         GetCurrentScore = 0;
-        gameDataManager.LoadPlayerData();
+        GameData.LoadPlayerData();
     }
 
     public void GameOver()
@@ -39,9 +39,10 @@ public sealed class GameManager
 
         Debug.Log("GameOver");
         IsGameOver = true;
-        gameDataManager.UpdateProgress(GetCurrentScore);
+        GameData.UpdateProgress(GetCurrentScore);
         OnGameOver?.Invoke();
-        gameDataManager.SavePlayerData();
+        GameData.SavePlayerData();
+        ResetGame();
     }
 
     public void ResetGame()

@@ -1,64 +1,64 @@
 using System;
 using UnityEngine;
 
-public class GameDataManager
+public class GameData
 {
-    private PlayerData playerData;
+    public PlayerData PlayerData;
 
     public void SavePlayerData()
     {
-        if (playerData == null)
+        if (PlayerData == null)
         {
             InitializeDefaultPlayerData();
         }
 
-        if (!playerData.IsValid())
+        if (!PlayerData.IsValid())
         {
-            playerData.InitializeDefaults();
+            PlayerData.InitializeDefaults();
         }
-        playerData.playerDataVersion = ConstantValues.CurrentPlayerDataVersion; // Set current 
+        PlayerData.playerDataVersion = ConstantValues.CurrentPlayerDataVersion; // Set current 
 
-        MyPlayerPrefs.SetJson<PlayerData>(ConstantValues.PLAYERDATA_PLAYERPREFS, playerData);
+        MyPlayerPrefs.SetJson<PlayerData>(ConstantValues.PLAYERDATA_PLAYERPREFS, PlayerData);
     }
 
 
     public PlayerData LoadPlayerData()
     {
-        playerData = MyPlayerPrefs.GetJson<PlayerData>(ConstantValues.PLAYERDATA_PLAYERPREFS);
+        PlayerData = MyPlayerPrefs.GetJson<PlayerData>(ConstantValues.PLAYERDATA_PLAYERPREFS);
 
-        if (playerData == null || !playerData.IsValid())
+        if (PlayerData == null || !PlayerData.IsValid())
         {
             InitializeDefaultPlayerData();
             SavePlayerData(); // Save the default data immediately to avoid null references later
         }
         else
         {
-            if (playerData.playerDataVersion < ConstantValues.CurrentPlayerDataVersion)
+            if (PlayerData.playerDataVersion < ConstantValues.CurrentPlayerDataVersion)
             {
-                MigratePlayerData(playerData);
+                MigratePlayerData(PlayerData);
             }
         }
-        return playerData;
+        return PlayerData;
     }
 
     public void UpdateProgress(int distance)
     {
-        if (playerData == null)
+        if (PlayerData == null)
         {
             LoadPlayerData();
         }
-        playerData.progress.lastDistance = distance;
-        playerData.progress.totalDistance += distance;
-        if (distance > playerData.progress.highestDistance)
+        PlayerData.progress.lastDistance = distance;
+        PlayerData.progress.totalDistance += distance;
+        if (distance > PlayerData.progress.highestDistance)
         {
-            playerData.progress.highestDistance = distance;
+            PlayerData.progress.highestDistance = distance;
         }
         SavePlayerData();
     }
 
     private void InitializeDefaultPlayerData()
     {
-        playerData = new PlayerData
+        PlayerData = new PlayerData
         {
             playerDataVersion = ConstantValues.CurrentPlayerDataVersion,
             playerId = Guid.NewGuid().ToString(), // Assign a new unique ID
