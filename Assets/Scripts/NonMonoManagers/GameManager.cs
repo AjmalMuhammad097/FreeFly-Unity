@@ -39,7 +39,7 @@ public sealed class GameManager
 
         Debug.Log("GameOver");
         IsGameOver = true;
-        GameData.Progress.Player.LastScore = GetCurrentScore;
+        GameData.Progress.Player.LastDistance = GetCurrentScore;
         OnGameOver?.Invoke();
         GameData.SaveProgress();
         ResetGame();    //TODO call this when the game resetted.

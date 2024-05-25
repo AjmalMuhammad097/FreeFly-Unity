@@ -48,8 +48,9 @@ public class Progress
 [Serializable]
 public class Player
 {
-    public int LastScore;
-    public int BestScore;
+    public int LastDistance;
+    public int BestDistance;
+    public int TotalDistance;
 }
 
 [Serializable]

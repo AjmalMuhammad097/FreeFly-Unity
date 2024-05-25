@@ -22,9 +22,9 @@ public class GameUIManager : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.InitializeGameManager();
-        Debug.Log($"Last Distance: {GameManager.Instance.GameData.PlayerData.progress.lastDistance} \n" +
-            $" Best Distance: {GameManager.Instance.GameData.PlayerData.progress.highestDistance} \n" +
-            $" Total Distance: {GameManager.Instance.GameData.PlayerData.progress.totalDistance}");
+        Debug.Log($"Last Distance: {GameManager.Instance.GameData.Progress.Player.LastDistance} \n" +
+            $" Best Distance: {GameManager.Instance.GameData.Progress.Player.BestDistance} \n" +
+            $" Best Distance: {GameManager.Instance.GameData.Progress.Player.BestDistance}");
     }
 
     private void Update()
