@@ -12,7 +12,8 @@ public class ConstantValues
     public const string BESTSCORE_PLAYERPREFS = "BestScore";
     public const string TOTALSCORE_PLAYERPREFS = "TotalScore";
 
-    public const string PLAYERDATA_PLAYERPREFS = "PlayerData";
+    public const string GAME_PROGRESS_PLAYERPREFS = "GameProgress";
+    public const string GAME_CONFIGURATION_PLAYERPREFS = "PlayerData";
     public const float SCORE_FACTOR = 15f;
 
 }

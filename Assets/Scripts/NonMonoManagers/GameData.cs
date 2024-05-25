@@ -1,96 +1,146 @@
 using System;
-using UnityEngine;
+using System.Collections.Generic;
 
+[Serializable]
 public class GameData
 {
-    public PlayerData PlayerData;
+    public Progress Progress;       //Save Progress In Player Prefs.
+    public Configuration Configuration;     //Control Configuration in Remote Config
 
-    public void SavePlayerData()
+    public GameData()
     {
-        if (PlayerData == null)
-        {
-            InitializeDefaultPlayerData();
-        }
-
-        if (!PlayerData.IsValid())
-        {
-            PlayerData.InitializeDefaults();
-        }
-        PlayerData.playerDataVersion = ConstantValues.CurrentPlayerDataVersion; // Set current 
-
-        MyPlayerPrefs.SetJson<PlayerData>(ConstantValues.PLAYERDATA_PLAYERPREFS, PlayerData);
+        Progress = new();
+        Configuration = new();
     }
 
-
-    public PlayerData LoadPlayerData()
+    public void SaveProgress()
     {
-        PlayerData = MyPlayerPrefs.GetJson<PlayerData>(ConstantValues.PLAYERDATA_PLAYERPREFS);
-
-        if (PlayerData == null || !PlayerData.IsValid())
-        {
-            InitializeDefaultPlayerData();
-            SavePlayerData(); // Save the default data immediately to avoid null references later
-        }
-        else
-        {
-            if (PlayerData.playerDataVersion < ConstantValues.CurrentPlayerDataVersion)
-            {
-                MigratePlayerData(PlayerData);
-            }
-        }
-        return PlayerData;
+        MyPlayerPrefs.SetJson(ConstantValues.GAME_PROGRESS_PLAYERPREFS, Progress);
     }
 
-    public void UpdateProgress(int distance)
+    public void LoadProgress()
     {
-        if (PlayerData == null)
-        {
-            LoadPlayerData();
-        }
-        PlayerData.progress.lastDistance = distance;
-        PlayerData.progress.totalDistance += distance;
-        if (distance > PlayerData.progress.highestDistance)
-        {
-            PlayerData.progress.highestDistance = distance;
-        }
-        SavePlayerData();
+        Progress = MyPlayerPrefs.GetJson<Progress>(ConstantValues.GAME_PROGRESS_PLAYERPREFS);
     }
 
-    private void InitializeDefaultPlayerData()
+    public void SaveConfiguration()     //For Backup
     {
-        PlayerData = new PlayerData
-        {
-            playerDataVersion = ConstantValues.CurrentPlayerDataVersion,
-            playerId = Guid.NewGuid().ToString(), // Assign a new unique ID
-            playerName = "DefaultPlayer",
-            progress = new PlayerData.ProgressData
-            {
-                lastDistance = 0,
-                highestDistance = 0,
-                totalDistance = 0,
-                boostsUsed = 0
-            },
-            settings = new PlayerData.SettingsData
-            {
-                musicSetting = true,
-                soundEffectSetting = true
-            }
-        };
+        MyPlayerPrefs.SetJson(ConstantValues.GAME_CONFIGURATION_PLAYERPREFS, Configuration);
     }
 
-    private void MigratePlayerData(PlayerData oldData)
+    public void LoadConfiguration()
     {
-        // Example migration logic
-        if (oldData.playerDataVersion == 0)
-        {
-            // Assuming version 0 did not have boostsUsed field and added it in version 1
-            oldData.progress.boostsUsed = 0;
-            oldData.playerDataVersion = 1; // Update to the next version
-        }
-
-        // Handle further migrations if needed
-
-        SavePlayerData(); // Save migrated data
+        Configuration = MyPlayerPrefs.GetJson<Configuration>(ConstantValues.GAME_CONFIGURATION_PLAYERPREFS);
     }
+}
+
+[Serializable]
+public class Progress
+{
+    public int Version = 1;
+    public Player Player;
+    public Progress()
+    {
+        Player = new();
+    }
+}
+
+[Serializable]
+public class Player
+{
+    public int LastScore;
+    public int BestScore;
+}
+
+[Serializable]
+public class Configuration
+{
+    public int Version = 1;
+    public LevelData LevelData;
+    public AdControl AdControl;
+    public Configuration()
+    {
+        LevelData = new();
+        AdControl = new();
+    }
+}
+
+[Serializable]
+public class LevelData
+{
+    public Rocket Rocket;
+    public Platform Platform;
+    public Spawner Spawner;
+    public Score Score;
+    public LevelData()
+    {
+        Rocket = new();
+        Platform = new();
+        Spawner = new();
+        Score = new();
+    }
+}
+
+[Serializable]
+public class Rocket
+{
+    public float Speed;
+}
+
+[Serializable]
+public class Platform
+{
+    public float Velocity;
+    public float Size;
+}
+
+[Serializable]
+public class Spawner
+{
+    public float Interval;
+    public float SuperPlatformRandomness;
+}
+
+[Serializable]
+public class Score
+{
+    public float Factor;
+}
+
+[Serializable]
+public class AdControl
+{
+    public List<Rewarded> Rewarded;
+    public List<Interstitial> Interstitial;
+    public Banner Banner;
+}
+
+[Serializable]
+public class Rewarded
+{
+    public string RewardType;
+    public int Count;
+
+    public Rewarded(string rewardType, int count)
+    {
+        RewardType = rewardType;
+        Count = count;
+    }
+}
+
+[Serializable]
+public class Interstitial
+{
+    public List<int> ShowOnLevels;
+
+    public Interstitial(List<int> showOnLevels)
+    {
+        ShowOnLevels = showOnLevels;
+    }
+}
+
+[Serializable]
+public class Banner
+{
 
 }

@@ -29,7 +29,7 @@ public sealed class GameManager
     {
         IsGameOver = false;
         GetCurrentScore = 0;
-        GameData.LoadPlayerData();
+        GameData.LoadProgress();
     }
 
     public void GameOver()
@@ -39,10 +39,10 @@ public sealed class GameManager
 
         Debug.Log("GameOver");
         IsGameOver = true;
-        GameData.UpdateProgress(GetCurrentScore);
+        GameData.Progress.Player.LastScore = GetCurrentScore;
         OnGameOver?.Invoke();
-        GameData.SavePlayerData();
-        ResetGame();
+        GameData.SaveProgress();
+        ResetGame();    //TODO call this when the game resetted.
     }
 
     public void ResetGame()
