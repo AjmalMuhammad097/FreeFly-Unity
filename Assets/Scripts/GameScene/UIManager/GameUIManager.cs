@@ -19,14 +19,6 @@ public class GameUIManager : MonoBehaviour
         GameManager.Instance.OnGameOver -= EnableGameOverPanel;
     }
 
-    private void Start()
-    {
-        GameManager.Instance.InitializeGameManager();
-        Debug.Log($"Last Distance: {GameManager.Instance.GameData.Progress.Player.LastDistance} \n" +
-            $" Best Distance: {GameManager.Instance.GameData.Progress.Player.BestDistance} \n" +
-            $" Best Distance: {GameManager.Instance.GameData.Progress.Player.BestDistance}");
-    }
-
     private void Update()
     {
         UpdateDistanceText();

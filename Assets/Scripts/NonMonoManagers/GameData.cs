@@ -48,7 +48,20 @@ public class Progress
 [Serializable]
 public class Player
 {
-    public int LastDistance;
+    private int lastDistance;
+    public int LastDistance
+    {
+        get { return lastDistance; }
+        set
+        {
+            lastDistance = value;
+            if (value > BestDistance)
+            {
+                BestDistance = value;
+            }
+            TotalDistance += value;
+        }
+    }
     public int BestDistance;
     public int TotalDistance;
 }
