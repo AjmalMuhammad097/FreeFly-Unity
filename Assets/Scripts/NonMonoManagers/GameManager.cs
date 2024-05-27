@@ -65,7 +65,7 @@ public sealed class GameManager
         if (IsGameOver)
             return;
 
-        currentScore += Time.deltaTime * ConstantValues.SCORE_FACTOR;
+        currentScore += Time.deltaTime * ConstantValues.SCORE_FACTOR;       //Fetch from Remote Config
         GetCurrentScore = (int)currentScore;
         Debug.Log("Get current score: " + (int)currentScore);
     }
