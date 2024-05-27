@@ -1,58 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
-public class CameraBehaviour : MonoBehaviour {
+public class CameraBehaviour : MonoBehaviour
+{
+    [SerializeField] private Transform _target;
+    [SerializeField] private float _cameraSpeed = 5f;
 
-	public Text scoreText;
-	public Text loseText;
-	public float score = 0f;
-	public GameObject losePanel; 
-	public Transform target;
-	public float cameraSpeed = 5f;
-	private bool lostGame = false;
 
-	
-	// Update is called once per frame
-	private void LateUpdate () {
-		if(!lostGame){
-			if(target.transform.position.y > transform.position.y){
-				transform.position = Vector3.Lerp(transform.position, 
-					new Vector3(transform.position.x,target.transform.position.y,transform.position.z), cameraSpeed * Time.deltaTime);
-				//score += Time.deltaTime * 15f;
-				GameManager.Instance.UpdateScore();		
-				//scoreText.text = "Score: "+ (int) score; //Implement it in other place
-			}
-		}
+    private void LateUpdate()
+    {
+        UpdateCameraPosition();
+    }
 
-	}
-
-	private void OnCollisionEnter2D(Collision2D other){
-		if(other.gameObject.transform == target)
-		{
-			GameManager.Instance.GameOver();
+    private void UpdateCameraPosition()
+    {
+        if (GameManager.Instance.IsGameOver)
+        {
+            return;
         }
 
-/*		if(other.gameObject.tag.Equals("Player")){		//try checking with player transform
-			lostGame = true;
-            
-			if(score > PlayerPrefs.GetInt("bestScore")) PlayerPrefs.SetInt("bestScore",(int) score);
-			loseGame();
-		}*/
-	}
+        if (_target == null)
+        {
+            Debug.LogError("Target is null.");
+            return;
+        }
 
-	private void loseGame(){
-		losePanel.SetActive(true);
-		loseText.text = "Game over!\n Score: "+(int) score+ "\nBest score: "+PlayerPrefs.GetInt("bestScore");
-		Destroy(target.gameObject);
-	}
+        if (_target.transform.position.y > transform.position.y)
+        {
+            transform.position = Vector3.Lerp(transform.position,
+                new Vector3(transform.position.x, _target.transform.position.y, transform.position.z), _cameraSpeed * Time.deltaTime);
+            GameManager.Instance.UpdateScore();
+        }
+    }
 
-	public void quit(){
-		Application.Quit();
-	}
-	public void startAgain(){
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-	}
+    private void OnCollisionEnter2D(Collision2D other)      //Game Over Collider
+    {
+        if (other.gameObject.transform == _target)
+        {
+            GameManager.Instance.GameOver();
+        }
+    }
 }
