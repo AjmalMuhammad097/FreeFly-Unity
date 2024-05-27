@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public sealed class GameManager
@@ -13,12 +11,15 @@ public sealed class GameManager
 
     static GameManager() { }
 
-    private GameManager() { }
+    private GameManager()
+    {
+        InitializeGameManager();
+    }
 
     #endregion
 
 
-    private GameDataManager gameDataManager = new();
+    public GameData GameData = new();
 
     public event Action OnGameOver;
     public bool IsGameOver { private set; get; }
@@ -28,8 +29,11 @@ public sealed class GameManager
     public void InitializeGameManager()
     {
         IsGameOver = false;
+        GameData.LoadProgress();
         GetCurrentScore = 0;
-        gameDataManager.LoadPlayerData();
+        Debug.Log("Game Initialized " + GameData.Progress.Player.LastDistance +
+            "  ....... " + GameData.Progress.Player.BestDistance +
+            " ...........  " + GameData.Progress.Player.TotalDistance);
     }
 
     public void GameOver()
@@ -39,15 +43,21 @@ public sealed class GameManager
 
         Debug.Log("GameOver");
         IsGameOver = true;
-        gameDataManager.UpdateProgress(GetCurrentScore);
+        GameData.Progress.Player.LastDistance = GetCurrentScore;
         OnGameOver?.Invoke();
-        gameDataManager.SavePlayerData();
+        Debug.Log("Game Initialized " + GameData.Progress.Player.LastDistance +
+    "  ....... " + GameData.Progress.Player.BestDistance +
+    " ...........  " + GameData.Progress.Player.TotalDistance);
+        GameData.SaveProgress();
     }
 
     public void ResetGame()
     {
         IsGameOver = false;
         GetCurrentScore = 0;
+        Debug.Log("Game Initialized " + GameData.Progress.Player.LastDistance +
+    "  ....... " + GameData.Progress.Player.BestDistance +
+    " ...........  " + GameData.Progress.Player.TotalDistance);
     }
 
     public void UpdateScore()
@@ -57,6 +67,6 @@ public sealed class GameManager
 
         currentScore += Time.deltaTime * ConstantValues.SCORE_FACTOR;
         GetCurrentScore = (int)currentScore;
-        Debug.Log("Get current score: " + GetCurrentScore);
+        Debug.Log("Get current score: " + (int)currentScore);
     }
 }

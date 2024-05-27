@@ -53,6 +53,7 @@ public static class MyPlayerPrefs
         try
         {
             string json = JsonConvert.SerializeObject(value);
+            Debug.Log(json);
             PlayerPrefs.SetString(key, json);
         }
         catch (Exception ex)
@@ -76,6 +77,7 @@ public static class MyPlayerPrefs
 
         try
         {
+            Debug.Log(json);
             return JsonConvert.DeserializeObject<T>(json);
         }
         catch (Exception ex)
