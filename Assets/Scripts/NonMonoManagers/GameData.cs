@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 [Serializable]
 public class GameData
@@ -20,7 +21,7 @@ public class GameData
 
     public void LoadProgress()
     {
-        Progress = MyPlayerPrefs.GetJson<Progress>(ConstantValues.GAME_PROGRESS_PLAYERPREFS);
+        Progress = MyPlayerPrefs.GetJson<Progress>(ConstantValues.GAME_PROGRESS_PLAYERPREFS, new());
     }
 
     public void SaveConfiguration()     //For Backup
@@ -30,7 +31,7 @@ public class GameData
 
     public void LoadConfiguration()
     {
-        Configuration = MyPlayerPrefs.GetJson<Configuration>(ConstantValues.GAME_CONFIGURATION_PLAYERPREFS);
+        Configuration = MyPlayerPrefs.GetJson<Configuration>(ConstantValues.GAME_CONFIGURATION_PLAYERPREFS, new());
     }
 }
 
@@ -55,11 +56,12 @@ public class Player
         set
         {
             lastDistance = value;
-            if (value > BestDistance)
+
+            if (lastDistance > BestDistance)
             {
-                BestDistance = value;
+                BestDistance = lastDistance;
             }
-            TotalDistance += value;
+            TotalDistance += lastDistance;
         }
     }
     public int BestDistance;

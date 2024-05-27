@@ -11,15 +11,12 @@ public sealed class GameManager
 
     static GameManager() { }
 
-    private GameManager()
-    {
-        InitializeGameManager();
-    }
+    private GameManager() { }
 
     #endregion
 
 
-    public GameData GameData = new();
+    public GameData GameData;
 
     public event Action OnGameOver;
     public bool IsGameOver { private set; get; }
@@ -29,11 +26,9 @@ public sealed class GameManager
     public void InitializeGameManager()
     {
         IsGameOver = false;
+        GameData ??= new();
         GameData.LoadProgress();
         GetCurrentScore = 0;
-        Debug.Log("Game Initialized " + GameData.Progress.Player.LastDistance +
-            "  ....... " + GameData.Progress.Player.BestDistance +
-            " ...........  " + GameData.Progress.Player.TotalDistance);
     }
 
     public void GameOver()
@@ -41,13 +36,13 @@ public sealed class GameManager
         if (IsGameOver)
             return;
 
-        Debug.Log("GameOver");
         IsGameOver = true;
+
         GameData.Progress.Player.LastDistance = GetCurrentScore;
         OnGameOver?.Invoke();
-        Debug.Log("Game Initialized " + GameData.Progress.Player.LastDistance +
-    "  ....... " + GameData.Progress.Player.BestDistance +
-    " ...........  " + GameData.Progress.Player.TotalDistance);
+        Debug.Log("Game Over:  " + GameData.Progress.Player.LastDistance +
+            "  ....... " + GameData.Progress.Player.BestDistance +
+            " ...........  " + GameData.Progress.Player.TotalDistance);
         GameData.SaveProgress();
     }
 
@@ -55,6 +50,8 @@ public sealed class GameManager
     {
         IsGameOver = false;
         GetCurrentScore = 0;
+        currentScore = 0;
+
         Debug.Log("Game Initialized " + GameData.Progress.Player.LastDistance +
     "  ....... " + GameData.Progress.Player.BestDistance +
     " ...........  " + GameData.Progress.Player.TotalDistance);
@@ -67,6 +64,5 @@ public sealed class GameManager
 
         currentScore += Time.deltaTime * ConstantValues.SCORE_FACTOR;       //Fetch from Remote Config
         GetCurrentScore = (int)currentScore;
-        Debug.Log("Get current score: " + (int)currentScore);
     }
 }

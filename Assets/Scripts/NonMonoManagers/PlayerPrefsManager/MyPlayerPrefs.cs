@@ -63,16 +63,12 @@ public static class MyPlayerPrefs
     }
 
     // Retrieve a generic object from JSON using Newtonsoft.Json, fallback to Unity's JsonUtility
-    public static T GetJson<T>(string key, string defaultStringValue = default)     //Usage MyPlayerPrefs.GetJson<PlayerData>("playerData");
+    public static T GetJson<T>(string key, T defaultObject = default)     //Usage MyPlayerPrefs.GetJson<PlayerData>("playerData");
     {
         string json = PlayerPrefs.GetString(key, string.Empty);
         if (string.IsNullOrEmpty(json))
         {
-            json = defaultStringValue;
-            if (string.IsNullOrEmpty(json))
-            {
-                return default;
-            }
+            return (defaultObject);
         }
 
         try
