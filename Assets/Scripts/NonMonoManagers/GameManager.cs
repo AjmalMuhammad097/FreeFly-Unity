@@ -65,4 +65,13 @@ public sealed class GameManager
         currentScore += Time.deltaTime * ConstantValues.SCORE_FACTOR;       //Fetch from Remote Config
         GetCurrentScore = (int)currentScore;
     }
+
+    public bool IsBestDistanceBeaten()
+    {
+        if (GetCurrentScore >= GameData.Progress.Player.BestDistance)
+        {
+            return true;
+        }
+        return false;
+    }
 }

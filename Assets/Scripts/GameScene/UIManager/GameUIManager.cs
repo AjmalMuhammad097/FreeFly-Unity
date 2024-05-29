@@ -6,8 +6,11 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private PausePanel _pausePanel;
     [SerializeField] private GameOverPanel _gameOverPanel;
 
+    [Space]
     [SerializeField] private TextMeshProUGUI _distanceText;
+    [SerializeField] private ImageBlinker _bestDistanceWarn;
 
+    private bool hasBlinked = false;
 
     private void OnEnable()
     {
@@ -43,5 +46,11 @@ public class GameUIManager : MonoBehaviour
             return;
 
         _distanceText.text = GameManager.Instance.GetCurrentScore.ToString() + "m";
+
+        if (GameManager.Instance.IsBestDistanceBeaten() && !hasBlinked)
+        {
+            _bestDistanceWarn.gameObject.SetActive(true);
+            hasBlinked = true;
+        }
     }
 }
