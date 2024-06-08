@@ -79,15 +79,16 @@ public class PlatformSpawner : MonoBehaviour
     {
         var platform = platformPoolerList[platformIndex];
 
-        // Reset platform position
-        platform.transform.position = new(Random.Range(-levelWidth, levelWidth), spawnPosition.y);
 
         // Update spawn position
         spawnPosition = new Vector2(0f, spawnPosition.y);
         spawnPosition += new Vector2(platform.transform.position.x, Random.Range(_minVerticalDistance, _maxVerticalDistance));
 
+        // Reset platform position
+        platform.transform.position = new(Random.Range(-levelWidth, levelWidth), spawnPosition.y);
+
         // Start growing platform
-        StartCoroutine(GrowPlatformAnimation(platform));        //This doesnt see in the screen. maybe check git.
+        StartCoroutine(GrowPlatformAnimation(platform));        
 
         // Update indexToTranslate and indexToCheck
         indexToTranslate = (indexToTranslate + 1) % platformPoolerList.Count;
