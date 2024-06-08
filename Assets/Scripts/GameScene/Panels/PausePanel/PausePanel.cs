@@ -13,17 +13,27 @@ public class PausePanel : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void ResumeButton()
+    public void PausePanelResumeButton()
     {
         gameObject.SetActive(false);
     }
 
-    public void RestartButton()
+    public void PausePanelRestartButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void HomeButton()
+    public void PausePanelSoundButton()
+    {
+
+    }
+
+    public void PausePanelMusicButton()
+    {
+
+    }
+
+    public void PausePanelHomeButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
