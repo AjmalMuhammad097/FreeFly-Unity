@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SettingsPanel : MonoBehaviour
 {
+    [SerializeField] private CreditsPanel _creditsPanel;
+
     public void SettingsPanelCloseButton()
     {
         this.gameObject.SetActive(false);
@@ -26,6 +28,6 @@ public class SettingsPanel : MonoBehaviour
 
     public void SettingsPanelCreditsButton()
     {
-
+        _creditsPanel.gameObject.SetActive(true);
     }
 }
