@@ -5,6 +5,7 @@ using UnityEngine;
 public class SettingsPanel : MonoBehaviour
 {
     [SerializeField] private CreditsPanel _creditsPanel;
+    [SerializeField] private SocialPanel _socialPanel;
 
     public void SettingsPanelCloseButton()
     {
@@ -23,7 +24,7 @@ public class SettingsPanel : MonoBehaviour
 
     public void SettingsPanelSocialButton()
     {
-
+        _socialPanel.gameObject.SetActive(true);
     }
 
     public void SettingsPanelCreditsButton()

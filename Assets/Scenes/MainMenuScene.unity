@@ -4056,6 +4056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _creditsPanel: {fileID: 2109508622}
+  _socialPanel: {fileID: 1100036174}
 --- !u!114 &968631501
 MonoBehaviour:
   m_ObjectHideFlags: 0
