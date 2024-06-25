@@ -26,6 +26,7 @@ public class AudioManager : MonoBehaviour
         // Singleton pattern implementation
         if (Instance == null)
         {
+            PlayMusic();
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
@@ -36,14 +37,14 @@ public class AudioManager : MonoBehaviour
     }
 
     // Play a music clip
-    public void PlayMusic(string clipName)
+    public void PlayMusic()
     {
         if (!isMusicOn) return;
 
-        AudioClip clip = _musicClips.Find(musicClip => musicClip.name == clipName);
+        AudioClip clip = _musicClips[Random.Range(0, _musicClips.Count)];//Find(musicClip => musicClip.name == clipName);
         if (clip == null)
         {
-            Debug.LogWarning("Music clip not found: " + clipName);
+            Debug.LogWarning("Music clip not found: " );
             return;
         }
 
@@ -52,14 +53,14 @@ public class AudioManager : MonoBehaviour
     }
 
     // Play a sound effect
-    public void PlaySFX(string clipName)
+    public void PlaySFX()
     {
         if (!isSfxOn) return;
 
-        AudioClip clip = _sfxClips.Find(sfxClip => sfxClip.name == clipName);
+        AudioClip clip = _sfxClips[Random.Range(0, _sfxClips.Count)];//.Find(sfxClip => sfxClip.name == clipName);
         if (clip == null)
         {
-            Debug.LogWarning("SFX clip not found: " + clipName);
+            Debug.LogWarning("SFX clip not found: " );
             return;
         }
 
