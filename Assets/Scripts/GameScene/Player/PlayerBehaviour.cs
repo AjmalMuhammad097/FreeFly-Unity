@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Constants;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] private float _movementSpeed = 5f;
     private Rigidbody2D playerRigidBody;
+    private PlayerAnimationController playerAnimationController;
 
     private PlayerInput playerInput;
     private void Awake()
@@ -17,6 +19,7 @@ public class PlayerBehaviour : MonoBehaviour
     private void Start()
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
+        playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
     }
     private void OnEnable()
     {
@@ -45,5 +48,21 @@ public class PlayerBehaviour : MonoBehaviour
     private void FixedUpdate()
     {
         //playerRigidBody.velocity = new Vector2(movement * _movementSpeed, playerRigidBody.velocity.y);
+    }
+    private void LateUpdate()
+    {
+        ChangeMouthState();
+    }
+
+    private void ChangeMouthState()
+    {
+        if (playerRigidBody.velocity.y < 0)
+        {
+            playerAnimationController.ChangePlayerStateTo(AnimationKeys.MouthAnimationValues.PLAYER_MOUTH_FALL);
+        }
+        if (playerRigidBody.velocity.y > 0)
+        {
+            playerAnimationController.ChangePlayerStateTo(AnimationKeys.MouthAnimationValues.PLAYER_MOUTH_HAPPY);
+        }
     }
 }

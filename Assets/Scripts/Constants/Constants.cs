@@ -30,7 +30,7 @@ public class Constants
         public class MouthAnimationValues
         {
             public const int PLAYER_MOUTH_NORMAL = 0;
-            public const int PLAYER_MOUTH_JUMP = 1;
+            public const int PLAYER_MOUTH_FALL = 1;
             public const int PLAYER_MOUTH_HAPPY = 2;
         }
     }

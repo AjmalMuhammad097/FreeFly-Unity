@@ -3,16 +3,22 @@ using static Constants;
 
 public class PlayerAnimationController : MonoBehaviour
 {
-    [SerializeField] private Animator playerFaceAnimator;
-    [SerializeField] private Animator playerJumpAnimator;
+    [SerializeField] private Animator _playerFaceAnimator;
+    [SerializeField] private Animator _playerJumpAnimator;
 
     public void PlayJumpAnimation()
     {
-        playerJumpAnimator.SetTrigger(AnimationKeys.PLAYER_JUMP_TRIGGER_ANIMATION);
+        _playerJumpAnimator.SetTrigger(AnimationKeys.PLAYER_JUMP_TRIGGER_ANIMATION);
+        Debug.Log("Playing Jump animation...");
     }
 
     public void ChangePlayerStateTo(int value)
     {
-        playerFaceAnimator.SetInteger(AnimationKeys.PLAYER_MOUTH_INT_ANIMATION, value);
+        if(_playerFaceAnimator.GetInteger(AnimationKeys.PLAYER_MOUTH_INT_ANIMATION) == value)
+        {
+            return;
+        }
+        Debug.Log("Changing state....");
+        _playerFaceAnimator.SetInteger(AnimationKeys.PLAYER_MOUTH_INT_ANIMATION, value);
     }
 }
