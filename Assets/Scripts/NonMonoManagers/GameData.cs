@@ -16,22 +16,22 @@ public class GameData
 
     public void SaveProgress()
     {
-        MyPlayerPrefs.SetJson(ConstantValues.GAME_PROGRESS_PLAYERPREFS, Progress);
+        MyPlayerPrefs.SetJson(Constants.PlayerPrefsKeys.GAME_PROGRESS_PLAYERPREFS, Progress);
     }
 
     public void LoadProgress()
     {
-        Progress = MyPlayerPrefs.GetJson<Progress>(ConstantValues.GAME_PROGRESS_PLAYERPREFS, new());
+        Progress = MyPlayerPrefs.GetJson<Progress>(Constants.PlayerPrefsKeys.GAME_PROGRESS_PLAYERPREFS, new());
     }
 
     public void SaveConfiguration()     //For Backup
     {
-        MyPlayerPrefs.SetJson(ConstantValues.GAME_CONFIGURATION_PLAYERPREFS, Configuration);
+        MyPlayerPrefs.SetJson(Constants.PlayerPrefsKeys.GAME_CONFIGURATION_PLAYERPREFS, Configuration);
     }
 
     public void LoadConfiguration()
     {
-        Configuration = MyPlayerPrefs.GetJson<Configuration>(ConstantValues.GAME_CONFIGURATION_PLAYERPREFS, new());
+        Configuration = MyPlayerPrefs.GetJson<Configuration>(Constants.PlayerPrefsKeys.GAME_CONFIGURATION_PLAYERPREFS, new());
     }
 }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Constants;
 
 public class AsteroidBehaviour : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class AsteroidBehaviour : MonoBehaviour
     {
         if (other.tag == "Laser")
         {
-            _explosionAnimation.SetTrigger(ConstantValues.HIT_TRIGGER_ANIMATION);
+            _explosionAnimation.SetTrigger(AnimationKeys.HIT_TRIGGER_ANIMATION);
             Destroy(other.gameObject);
             Destroy(this.gameObject, 0.1f);
         }

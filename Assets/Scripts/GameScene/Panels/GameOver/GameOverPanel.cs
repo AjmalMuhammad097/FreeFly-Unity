@@ -17,8 +17,8 @@ public class GameOverPanel : MonoBehaviour
 
     private void UpdatePanelUI()
     {
-        _yourDistanceText.text = gameManager.GameData.Progress.Player.LastDistance.ToString() + ConstantValues.DISTANCE_MEASURE_UNIT;
-        _bestDistanceText.text = gameManager.GameData.Progress.Player.BestDistance.ToString() + ConstantValues.DISTANCE_MEASURE_UNIT;
+        _yourDistanceText.text = gameManager.GameData.Progress.Player.LastDistance.ToString() + Constants.Score.DISTANCE_MEASURE_UNIT;
+        _bestDistanceText.text = gameManager.GameData.Progress.Player.BestDistance.ToString() + Constants.Score.DISTANCE_MEASURE_UNIT;
     }
 
     public void RestartButton()
