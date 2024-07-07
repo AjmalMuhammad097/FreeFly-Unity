@@ -38,15 +38,16 @@ public class Constants
     public class RemoteConfigKeys
     {
 
-    public const string HIT_TRIGGER_ANIMATION = "Hit";
+        public const string HIT_TRIGGER_ANIMATION = "Hit";
 
-    public const string GAME_PROGRESS_PLAYERPREFS = "GameProgress";
-    public const string GAME_CONFIGURATION_PLAYERPREFS = "PlayerData";
-    public const float SCORE_FACTOR = 15f;
+        public const string GAME_PROGRESS_PLAYERPREFS = "GameProgress";
+        public const string GAME_CONFIGURATION_PLAYERPREFS = "PlayerData";
+        public const float SCORE_FACTOR = 15f;
 
-    public const string DISTANCE_MEASURE_UNIT = "m";
+        public const string DISTANCE_MEASURE_UNIT = "m";
 
 
+    }
     public class AudioConstants
     {
         public const string MUSIC_1 = "music1";
