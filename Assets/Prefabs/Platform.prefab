@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2711310289981288074}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 413789881
-  m_SortingLayer: 3
+  m_SortingLayerID: 1267309657
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b51115f38be2f97428a870f0f9733248, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -124,8 +124,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.3823993, y: 0.14}
-  - {x: 0.3785909, y: 0.14}
+  - {x: -0.58, y: 0.21}
+  - {x: 0.58, y: 0.21}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -273,7 +273,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.16, y: 0.16, z: 0.16}
+  m_LocalScale: {x: 0.24, y: 0.24, z: 0.24}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4529670196486990}
@@ -316,8 +316,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 413789881
-  m_SortingLayer: 3
+  m_SortingLayerID: 1267309657
+  m_SortingLayer: 1
   m_SortingOrder: 5
   m_Sprite: {fileID: -1302354101, guid: 045c92177263c1441bfae101c262d6f8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -355,8 +355,8 @@ Transform:
   m_GameObject: {fileID: 8488213924312898027}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.012, z: 0}
-  m_LocalScale: {x: 0.1145, y: 0.1145, z: 0.1145}
+  m_LocalPosition: {x: 0, y: -0.017999887, z: 0}
+  m_LocalScale: {x: 0.17175, y: 0.17175, z: 0.17175}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1927726411572496665}
