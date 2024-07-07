@@ -38,5 +38,27 @@ public class Constants
     public class RemoteConfigKeys
     {
 
+    public const string HIT_TRIGGER_ANIMATION = "Hit";
+
+    public const string GAME_PROGRESS_PLAYERPREFS = "GameProgress";
+    public const string GAME_CONFIGURATION_PLAYERPREFS = "PlayerData";
+    public const float SCORE_FACTOR = 15f;
+
+    public const string DISTANCE_MEASURE_UNIT = "m";
+
+
+    public class AudioConstants
+    {
+        public const string MUSIC_1 = "music1";
+        public const string MUSIC_2 = "music2";
+
+        public const string SFX_POSITIVE_BUTTON_1 = "sfx1";
+        public const string SFX_POSITIVE_BUTTON_2 = "sfx2";
+        public const string SFX_POSITIVE_BUTTON_3 = "sfx3";
+        public const string SFX_NEGATIVE_BUTTON_1 = "sfx4";
+        public const string SFX_NEGATIVE_BUTTON_2 = "sfx5";
+        public const string SFX_NEGATIVE_BUTTON_3 = "sfx6";
+
+        public const string SFX_BOUNCE_EVENT = "event1";
     }
 }
