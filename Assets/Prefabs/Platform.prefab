@@ -124,8 +124,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.58, y: 0.21}
-  - {x: 0.58, y: 0.21}
+  - {x: -0.82, y: 0.28}
+  - {x: 0.82, y: 0.28}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -235,7 +235,7 @@ SpriteRenderer:
   m_SortingLayerID: 1267309657
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 909484255, guid: 137fbe96100d48446afb6e984b882b18, type: 3}
+  m_Sprite: {fileID: 2007924213, guid: 110c2491eecebf942b8eed1a90d24639, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -355,8 +355,8 @@ Transform:
   m_GameObject: {fileID: 8488213924312898027}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.017999887, z: 0}
-  m_LocalScale: {x: 0.17175, y: 0.17175, z: 0.17175}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.24999999, y: 0.24999999, z: 0.24999999}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1927726411572496665}
