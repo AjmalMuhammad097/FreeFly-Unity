@@ -4,9 +4,11 @@ using UnityEngine.UI;
 
 public class ImageBlinker : MonoBehaviour
 {
-    private Image imageToBlink;
     [SerializeField] private float _blinkSpeed = 1f;
     [SerializeField] private float _blinkDuration = 5f;
+    [SerializeField] private bool _disableAfterBlinking = true;
+
+    private Image imageToBlink;
 
     private void Start()
     {
@@ -53,7 +55,10 @@ public class ImageBlinker : MonoBehaviour
 
         // Ensure the image is fully visible at the end
         imageToBlink.color = originalColor;
-        gameObject.SetActive(false);
+        if (_disableAfterBlinking)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
 

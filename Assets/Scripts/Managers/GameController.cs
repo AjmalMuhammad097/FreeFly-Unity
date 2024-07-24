@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    private void Awake()
+    [SerializeField] private PlayerBehaviour player;
+
+    public void StartGame()
     {
-        GameManager.Instance.ResetGame();
+        GameManager.Instance.StartGame();
+        player.ResumePlayer();
     }
 }

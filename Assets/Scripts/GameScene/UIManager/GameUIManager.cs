@@ -39,6 +39,10 @@ public class GameUIManager : MonoBehaviour
 
     private void UpdateDistanceText()
     {
+        if (!GameManager.Instance.IsGameOn)
+        {
+            return;
+        }
         if (GameManager.Instance.IsGameOver)
             return;
 

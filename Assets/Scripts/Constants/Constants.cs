@@ -18,6 +18,7 @@ public class Constants
     {
         public const string GAME_PROGRESS_PLAYERPREFS = "GameProgress";
         public const string GAME_CONFIGURATION_PLAYERPREFS = "PlayerData";
+        public const string CONTROLS_INTRO_PLAYERPREFS = "ControlsIntro";
     }
 
     public class AnimationKeys

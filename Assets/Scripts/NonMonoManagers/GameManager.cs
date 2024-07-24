@@ -19,13 +19,13 @@ public sealed class GameManager
     public GameData GameData;
 
     public event Action OnGameOver;
-    public bool IsGameOver { private set; get; }
+    public bool IsGameOver { private set; get; } = false;
+    public bool IsGameOn { private set; get; } = false;
     public int GetCurrentScore { private set; get; }
     private float currentScore;
 
     public void InitializeGameManager()
     {
-        IsGameOver = false;
         GameData ??= new();
         GameData.LoadProgress();
         GetCurrentScore = 0;
@@ -37,6 +37,7 @@ public sealed class GameManager
             return;
 
         IsGameOver = true;
+        IsGameOn = false;
 
         GameData.Progress.Player.LastDistance = GetCurrentScore;
         OnGameOver?.Invoke();
@@ -46,9 +47,12 @@ public sealed class GameManager
         GameData.SaveProgress();
     }
 
-    public void ResetGame()
+    public void StartGame()
     {
         IsGameOver = false;
+        IsGameOn = true;
+        GameData ??= new();
+        GameData.LoadProgress();
         GetCurrentScore = 0;
         currentScore = 0;
 
