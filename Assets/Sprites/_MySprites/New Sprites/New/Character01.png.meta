@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 684843b9720346b48ba8c43a08e4661e
+guid: 23c54a67c1d48df479bf9f55fbe3f918
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,97 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FlashIcon
-      rect:
-        serializedVersion: 2
-        x: 239
-        y: 515
-        width: 244
-        height: 203
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 990b06cb4cb02d344b2b9b7dfd6055f1
-      internalID: -266918854
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WaveIcon
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 550
-        width: 688
-        height: 134
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8d02607c8a864cd4585540bd4e1d0eba
-      internalID: -594531339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Platform1
+      name: CharBody
       rect:
         serializedVersion: 2
         x: 0
-        y: 252
-        width: 717
-        height: 230
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fecc18a2bc475ad4baa817df9ae4a0f7
-      internalID: -90838098
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Platform3
-      rect:
-        serializedVersion: 2
-        x: 756
-        y: 252
-        width: 717
-        height: 230
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d7ff943cdf03e04439f10f980062d155
-      internalID: -859540453
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Platform2
-      rect:
-        serializedVersion: 2
-        x: 5
         y: 0
-        width: 717
-        height: 235
+        width: 206
+        height: 237
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f36dbb34ee47e364f8eb68684846c053
-      internalID: 1880286138
+      spriteID: 99c4035f38296db408624499170e12d3
+      internalID: -1794695097
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Platform4
+      name: MouthHappy
       rect:
         serializedVersion: 2
-        x: 751
-        y: 0
-        width: 717
-        height: 235
+        x: 229
+        y: 148
+        width: 71
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,8 +145,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 733df45aa96b59642856c4a5e7259408
-      internalID: 296943597
+      spriteID: 8600566691df8814fa2019918d56a01e
+      internalID: 402233682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MouthNormal
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 148
+        width: 71
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b82acadb32fa06840b2b25052fa016c6
+      internalID: 252520046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MouthWoo
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 133
+        width: 28
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6608fefd377b8446b7da73bc391b692
+      internalID: -1506568112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spring1
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 40
+        width: 47
+        height: 55
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 027d3d169afc8f440a40960585abd76f
+      internalID: 1014430089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spring2
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 49
+        width: 47
+        height: 46
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2887ce85891cd94da916c87c24bbcb7
+      internalID: 1429174660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spring3
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 61
+        width: 47
+        height: 34
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34e39836be9e8fa45b9a5345e1c26f7e
+      internalID: 1854746251
       vertices: []
       indices: 
       edges: []
@@ -246,12 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      FlashIcon: -266918854
-      Platform1: -90838098
-      Platform2: 1880286138
-      Platform3: -859540453
-      Platform4: 296943597
-      WaveIcon: -594531339
+      CharBody: -1794695097
+      MouthHappy: 402233682
+      MouthNormal: 252520046
+      MouthWoo: -1506568112
+      Spring1: 1014430089
+      Spring2: 1429174660
+      Spring3: 1854746251
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

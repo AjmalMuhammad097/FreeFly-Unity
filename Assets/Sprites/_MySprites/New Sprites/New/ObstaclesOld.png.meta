@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 23c54a67c1d48df479bf9f55fbe3f918
+guid: 3045e201cd5a1cc4c9d6920df5243093
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Obstacle1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 242
+        width: 715
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab036e299befe754895483a394b251a1
+      internalID: -1709654878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstacle2
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 242
+        width: 715
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b380061148c1e27468c268862e3c6a8b
+      internalID: -219496185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FlashIcon
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 0
+        width: 244
+        height: 203
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9275f4f0683341f43a1a06807008d496
+      internalID: 713600963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaveIcon
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 23
+        width: 687
+        height: 133
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89c96b957848ff54885fc48795c4fd7f
+      internalID: -28792794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +203,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      FlashIcon: 713600963
+      Obstacle1: -1709654878
+      Obstacle2: -219496185
+      WaveIcon: -28792794
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
