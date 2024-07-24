@@ -288,7 +288,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2064073525
   m_SortingLayer: -2
-  m_SortingOrder: 4
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 3b11082be8ec09e41acff1b73d96287f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -787,7 +787,6 @@ GameObject:
   m_Component:
   - component: {fileID: 203698821}
   - component: {fileID: 203698823}
-  - component: {fileID: 203698822}
   m_Layer: 0
   m_Name: Bg2 (1)
   m_TagString: Untagged
@@ -810,20 +809,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1723507578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &203698822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 203698820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8372c798965f47c4e912c89452b24002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraTransform: {fileID: 519420032}
-  _parallexEffect: 0.7
 --- !u!212 &203698823
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1507,7 +1492,6 @@ GameObject:
   m_Component:
   - component: {fileID: 359908577}
   - component: {fileID: 359908579}
-  - component: {fileID: 359908578}
   m_Layer: 0
   m_Name: Bg5 (2)
   m_TagString: Untagged
@@ -1530,20 +1514,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 23831685}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &359908578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 359908576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8372c798965f47c4e912c89452b24002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraTransform: {fileID: 519420032}
-  _parallexEffect: 0.3
 --- !u!212 &359908579
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1584,7 +1554,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2064073525
   m_SortingLayer: -2
-  m_SortingOrder: 4
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 3b11082be8ec09e41acff1b73d96287f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2622,7 +2592,6 @@ GameObject:
   m_Component:
   - component: {fileID: 657311158}
   - component: {fileID: 657311160}
-  - component: {fileID: 657311159}
   m_Layer: 0
   m_Name: Bg3 (2)
   m_TagString: Untagged
@@ -2645,20 +2614,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1938008820}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &657311159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 657311157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8372c798965f47c4e912c89452b24002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraTransform: {fileID: 519420032}
-  _parallexEffect: 0.5
 --- !u!212 &657311160
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2699,7 +2654,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2064073525
   m_SortingLayer: -2
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: bb383819552e5ac468d5f87d6783f42d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3126,7 +3081,6 @@ GameObject:
   m_Component:
   - component: {fileID: 863315211}
   - component: {fileID: 863315213}
-  - component: {fileID: 863315212}
   m_Layer: 0
   m_Name: Bg4 (2)
   m_TagString: Untagged
@@ -3149,20 +3103,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1386845194}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &863315212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 863315210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8372c798965f47c4e912c89452b24002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraTransform: {fileID: 519420032}
-  _parallexEffect: 0.3
 --- !u!212 &863315213
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3203,7 +3143,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2064073525
   m_SortingLayer: -2
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 050462ed30b6c3f4289428a24c50cfa4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3225,7 +3165,6 @@ GameObject:
   m_Component:
   - component: {fileID: 942322497}
   - component: {fileID: 942322499}
-  - component: {fileID: 942322498}
   m_Layer: 0
   m_Name: Bg4 (1)
   m_TagString: Untagged
@@ -3248,20 +3187,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1386845194}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &942322498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 942322496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8372c798965f47c4e912c89452b24002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraTransform: {fileID: 519420032}
-  _parallexEffect: 0.3
 --- !u!212 &942322499
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3302,7 +3227,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2064073525
   m_SortingLayer: -2
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 050462ed30b6c3f4289428a24c50cfa4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3324,7 +3249,6 @@ GameObject:
   m_Component:
   - component: {fileID: 974430618}
   - component: {fileID: 974430620}
-  - component: {fileID: 974430619}
   m_Layer: 0
   m_Name: Bg5 (1)
   m_TagString: Untagged
@@ -3347,20 +3271,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 23831685}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &974430619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 974430617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8372c798965f47c4e912c89452b24002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraTransform: {fileID: 519420032}
-  _parallexEffect: 0.3
 --- !u!212 &974430620
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3401,7 +3311,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2064073525
   m_SortingLayer: -2
-  m_SortingOrder: 4
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 3b11082be8ec09e41acff1b73d96287f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3977,7 +3887,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1164791513}
   - component: {fileID: 1164791515}
-  - component: {fileID: 1164791514}
   m_Layer: 0
   m_Name: Bg1 (2)
   m_TagString: Untagged
@@ -4000,20 +3909,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1367534099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1164791514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1164791512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8372c798965f47c4e912c89452b24002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraTransform: {fileID: 519420032}
-  _parallexEffect: 0.8
 --- !u!212 &1164791515
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4581,7 +4476,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1261234444}
   - component: {fileID: 1261234446}
-  - component: {fileID: 1261234445}
   m_Layer: 0
   m_Name: Bg (1)
   m_TagString: Untagged
@@ -4604,20 +4498,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1335174648}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1261234445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261234443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8372c798965f47c4e912c89452b24002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraTransform: {fileID: 519420032}
-  _parallexEffect: 1
 --- !u!212 &1261234446
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4680,7 +4560,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1317712048}
   - component: {fileID: 1317712050}
-  - component: {fileID: 1317712049}
   m_Layer: 0
   m_Name: Bg1 (1)
   m_TagString: Untagged
@@ -4703,20 +4582,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1367534099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1317712049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1317712047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8372c798965f47c4e912c89452b24002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraTransform: {fileID: 519420032}
-  _parallexEffect: 0.8
 --- !u!212 &1317712050
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5194,7 +5059,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2064073525
   m_SortingLayer: -2
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 050462ed30b6c3f4289428a24c50cfa4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6043,7 +5908,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1643720009}
   - component: {fileID: 1643720011}
-  - component: {fileID: 1643720010}
   m_Layer: 0
   m_Name: Bg2 (2)
   m_TagString: Untagged
@@ -6066,20 +5930,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1723507578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1643720010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643720008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8372c798965f47c4e912c89452b24002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraTransform: {fileID: 519420032}
-  _parallexEffect: 0.7
 --- !u!212 &1643720011
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6231,7 +6081,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1714505564}
   - component: {fileID: 1714505566}
-  - component: {fileID: 1714505565}
   m_Layer: 0
   m_Name: Bg (2)
   m_TagString: Untagged
@@ -6254,20 +6103,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1335174648}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1714505565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1714505563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8372c798965f47c4e912c89452b24002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraTransform: {fileID: 519420032}
-  _parallexEffect: 1
 --- !u!212 &1714505566
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7555,7 +7390,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2064073525
   m_SortingLayer: -2
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: bb383819552e5ac468d5f87d6783f42d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7885,7 +7720,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2067663441}
   - component: {fileID: 2067663443}
-  - component: {fileID: 2067663442}
   m_Layer: 0
   m_Name: Bg3 (1)
   m_TagString: Untagged
@@ -7908,20 +7742,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1938008820}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2067663442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2067663440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8372c798965f47c4e912c89452b24002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraTransform: {fileID: 519420032}
-  _parallexEffect: 0.5
 --- !u!212 &2067663443
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7962,7 +7782,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2064073525
   m_SortingLayer: -2
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: bb383819552e5ac468d5f87d6783f42d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
