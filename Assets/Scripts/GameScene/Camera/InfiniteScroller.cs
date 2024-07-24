@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InfiniteScroller : MonoBehaviour
 {
-    [SerializeField] private float scrollSpeed; // Speed at which the background scrolls downwards
+    [SerializeField] private float _scrollSpeed = 0; // Speed at which the background scrolls downwards
 
     private float length, startPos;
     private Transform thisTransform;
@@ -18,7 +18,7 @@ public class InfiniteScroller : MonoBehaviour
 
     private void LateUpdate()
     {
-        float newPosition = Mathf.Repeat(Time.time * scrollSpeed, length);
+        float newPosition = Mathf.Repeat(Time.time * _scrollSpeed, length);
         thisTransform.position = new Vector3(transform.position.x, startPos - newPosition, transform.position.z);
     }
 }
