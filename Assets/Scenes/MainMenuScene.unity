@@ -1469,8 +1469,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 112.069336}
-  m_SizeDelta: {x: 757.65, y: 184.3418}
+  m_AnchoredPosition: {x: 0, y: 110}
+  m_SizeDelta: {x: 760, y: 215}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &336750039
 MonoBehaviour:
@@ -1492,7 +1492,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -948620992, guid: 4618f0ec36a02fc47acd0d27e46a20df, type: 3}
+  m_Sprite: {fileID: 1469671395, guid: 8c34b16b967619849ad7a34cc668674c, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1501,7 +1501,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 1.11
 --- !u!222 &336750040
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1988,8 +1988,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4280094738
+  m_fontColor: {r: 0.07058824, g: 0.0627451, b: 0.1137255, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4304,10 +4304,10 @@ MonoBehaviour:
     Ajmal
 
 
-    Sprites and Icons from:
+    Sprites and Icons made by:
 
-    Bayat Games
-    (Asset Store)'
+    Then who?
+    me only..'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 27c1f2bea0737d74a8ddf655a8456522, type: 2}
   m_sharedMaterial: {fileID: -2398525520219230259, guid: 27c1f2bea0737d74a8ddf655a8456522,
@@ -4317,8 +4317,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4279503885
+  m_fontColor: {r: 0.050980397, g: 0.04705883, b: 0.078431375, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6361,8 +6361,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 411.6051, y: -547.2351}
-  m_SizeDelta: {x: 743.2102, y: 1014.4702}
+  m_AnchoredPosition: {x: 399.99072, y: -520.5416}
+  m_SizeDelta: {x: 719.98145, y: 961.08325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1087729623
 MonoBehaviour:
@@ -6410,7 +6410,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -364098257, guid: 4618f0ec36a02fc47acd0d27e46a20df, type: 3}
+  m_Sprite: {fileID: 905638023, guid: 8c34b16b967619849ad7a34cc668674c, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6419,7 +6419,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.85
 --- !u!222 &1087729625
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6646,8 +6646,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 371.6051, y: -507.2351}
-  m_SizeDelta: {x: 743.2102, y: 1014.4702}
+  m_AnchoredPosition: {x: 359.99072, y: -480.54163}
+  m_SizeDelta: {x: 719.98145, y: 961.08325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1108988264
 MonoBehaviour:
@@ -7264,9 +7264,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding:
     m_Left: 40
-    m_Right: 40
+    m_Right: 60
     m_Top: 40
-    m_Bottom: 40
+    m_Bottom: 100
   m_ChildAlignment: 4
   m_Spacing: 40
   m_ChildForceExpandWidth: 1
@@ -11822,7 +11822,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 76184, guid: 4618f0ec36a02fc47acd0d27e46a20df, type: 3}
+  m_Sprite: {fileID: 87962404, guid: 8c34b16b967619849ad7a34cc668674c, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11831,7 +11831,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.45
+  m_PixelsPerUnitMultiplier: 0.88
 --- !u!222 &2144471880
 CanvasRenderer:
   m_ObjectHideFlags: 0
