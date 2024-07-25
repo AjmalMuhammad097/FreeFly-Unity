@@ -9,6 +9,7 @@ public static class MyPlayerPrefs
     public static void SetInt(string key, int value)
     {
         PlayerPrefs.SetInt(key, value);
+        PlayerPrefs.Save();
     }
 
     public static int GetInt(string key, int defaultValue = 0)
@@ -19,6 +20,7 @@ public static class MyPlayerPrefs
     public static void SetFloat(string key, float value)
     {
         PlayerPrefs.SetFloat(key, value);
+        PlayerPrefs.Save();
     }
 
     public static float GetFloat(string key, float defaultValue = 0f)
@@ -29,6 +31,7 @@ public static class MyPlayerPrefs
     public static void SetString(string key, string value)
     {
         PlayerPrefs.SetString(key, value);
+        PlayerPrefs.Save();
     }
 
     public static string GetString(string key, string defaultValue = "")
@@ -39,6 +42,7 @@ public static class MyPlayerPrefs
     public static void SetBool(string key, bool value)
     {
         PlayerPrefs.SetInt(key, value ? 1 : 0);
+        PlayerPrefs.Save();
     }
 
     public static bool GetBool(string key, bool defaultValue = false)
@@ -55,6 +59,7 @@ public static class MyPlayerPrefs
             string json = JsonConvert.SerializeObject(value);
             Debug.Log(json);
             PlayerPrefs.SetString(key, json);
+            PlayerPrefs.Save();
         }
         catch (Exception ex)
         {
