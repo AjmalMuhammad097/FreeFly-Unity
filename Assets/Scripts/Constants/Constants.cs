@@ -7,7 +7,7 @@ public class Constants
     public const int CurrentPlayerDataVersion = 1;
 
 
-    public class Score
+    public class ScoreData
     {
         public const float SCORE_FACTOR = 15f;
 

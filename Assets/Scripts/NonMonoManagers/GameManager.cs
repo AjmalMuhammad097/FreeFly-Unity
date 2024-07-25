@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using static Constants;
+
 
 public sealed class GameManager
 {
@@ -20,39 +22,22 @@ public sealed class GameManager
 
     public event Action OnGameOver;
     public bool IsGameOver { private set; get; } = false;
-    public bool IsGameOn { private set; get; } = false;
     public int GetCurrentScore { private set; get; }
     private float currentScore;
 
     public void InitializeGameManager()
     {
+        IsGameOver = false;
         GameData ??= new();
-        GameData.LoadProgress();
+        GameData?.LoadProgress();
         GetCurrentScore = 0;
-    }
-
-    public void GameOver()
-    {
-        if (IsGameOver)
-            return;
-
-        IsGameOver = true;
-        IsGameOn = false;
-
-        GameData.Progress.Player.LastDistance = GetCurrentScore;
-        OnGameOver?.Invoke();
-        Debug.Log("Game Over:  " + GameData.Progress.Player.LastDistance +
-            "  ....... " + GameData.Progress.Player.BestDistance +
-            " ...........  " + GameData.Progress.Player.TotalDistance);
-        GameData.SaveProgress();
     }
 
     public void StartGame()
     {
         IsGameOver = false;
-        IsGameOn = true;
         GameData ??= new();
-        GameData.LoadProgress();
+        GameData?.LoadProgress();
         GetCurrentScore = 0;
         currentScore = 0;
 
@@ -61,12 +46,26 @@ public sealed class GameManager
     " ...........  " + GameData.Progress.Player.TotalDistance);
     }
 
+    public void GameOver()
+    {
+        if (IsGameOver)
+            return;
+
+        IsGameOver = true;
+        GameData.Progress.Player.LastDistance = GetCurrentScore;
+        OnGameOver?.Invoke();
+        Debug.Log("Game Over:  " + GameData.Progress.Player.LastDistance +
+            "  ....... " + GameData.Progress.Player.BestDistance +
+            " ...........  " + GameData.Progress.Player.TotalDistance);
+        GameData?.SaveProgress();
+    }
+
     public void UpdateScore()
     {
         if (IsGameOver)
             return;
 
-        currentScore += Time.deltaTime * Constants.Score.SCORE_FACTOR;       //Fetch from Remote Config
+        currentScore += Time.deltaTime * ScoreData.SCORE_FACTOR;       //Fetch from Remote Config
         GetCurrentScore = (int)currentScore;
     }
 

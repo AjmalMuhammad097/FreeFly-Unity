@@ -13,10 +13,6 @@ public class CameraBehaviour : MonoBehaviour
 
     private void UpdateCameraPosition()
     {
-        if (!GameManager.Instance.IsGameOn)
-        {
-            return;
-        }
         if (GameManager.Instance.IsGameOver)
         {
             return;

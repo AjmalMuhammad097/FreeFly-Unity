@@ -2,11 +2,9 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private PlayerBehaviour player;
-
-    public void StartGame()
+    public void Start()
     {
         GameManager.Instance.StartGame();
-        player.ResumePlayer();
+        Debug.Log("Starting the Game...");
     }
 }
