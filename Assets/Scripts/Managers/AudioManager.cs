@@ -1,93 +1,135 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Constants;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager
 {
-    public static AudioManager Instance;
+    #region Singleton
 
-    [SerializeField]
-    private AudioSource _musicSource;
+    private static readonly AudioManager instance = new();
 
-    [SerializeField]
-    private AudioSource _sfxSource;
+    public static AudioManager Instance { get { return instance; } }
 
-    [SerializeField]
-    private List<AudioClip> _musicClips;
+    static AudioManager() { }
 
-    [SerializeField]
-    private List<AudioClip> _sfxClips;
+    private AudioManager() { }
 
-    private bool isMusicOn = true;
-    private bool isSfxOn = true;
+    #endregion
 
-    private void Awake()
+    private AudioSource musicAudioSource;
+    private AudioSource sfxAudioSource;
+
+    private Dictionary<string, AudioClip> musicClipDictionary;
+    private Dictionary<string, AudioClip> sfxClipDictionary;
+
+    public bool IsMusicOn { private set; get; } = true;
+    public bool IsSFXOn { private set; get; } = true;
+
+
+    public void Initialize(AudioSource musicAudioSource, AudioSource sfxAudioSource, SerializableDictionary<string, AudioClip> musicClipDictionary, SerializableDictionary<string, AudioClip> sfxClipDictionary)
     {
-        // Singleton pattern implementation
-        if (Instance == null)
-        {
-            PlayMusic();
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        this.musicAudioSource = musicAudioSource; this.sfxAudioSource = sfxAudioSource;
+        this.musicClipDictionary = musicClipDictionary?.ToDictionary(); ; this.sfxClipDictionary = sfxClipDictionary?.ToDictionary();
+        this.musicAudioSource.volume = GameManager.Instance.GetGameConfigData()?.AudioSettings?.MusicVolume ?? (float)new AudioSettings().MusicVolume;
+        this.sfxAudioSource.volume = GameManager.Instance.GetGameConfigData()?.AudioSettings?.SoundVolume ?? (float)new AudioSettings().SoundVolume;
+        LoadStates();
+        PlayMusic(AudioConstants.MUSIC_1);
     }
 
-    // Play a music clip
-    public void PlayMusic()
+    private bool TryGetMusic(string musicName, out AudioClip clip)
     {
-        if (!isMusicOn) return;
+        clip = null;
+        return !string.IsNullOrEmpty(musicName) &&
+               musicClipDictionary.TryGetValue(musicName, out clip) &&
+               musicAudioSource != null &&
+               IsMusicOn &&
+               clip != null;
+    }
 
-        AudioClip clip = _musicClips[Random.Range(0, _musicClips.Count)];//Find(musicClip => musicClip.name == clipName);
-        if (clip == null)
-        {
-            Debug.LogWarning("Music clip not found: " );
-            return;
-        }
+    private bool TryGetSFX(string sfxName, out AudioClip clip)
+    {
+        clip = null;
+        return !string.IsNullOrEmpty(sfxName) &&
+               sfxClipDictionary.TryGetValue(sfxName, out clip) &&
+               sfxAudioSource != null &&
+               IsSFXOn &&
+               clip != null;
+    }
 
-        _musicSource.clip = clip;
-        _musicSource.Play();
+
+    // Play a music clip
+    public void PlayMusic(string musicName)
+    {
+        if (!TryGetMusic(musicName, out var clip)) return;
+        Logger.Log("Music Started to play...");
+        musicAudioSource.clip = clip;
+        musicAudioSource.loop = true;
+        musicAudioSource.Play();
     }
 
     // Play a sound effect
-    public void PlaySFX()
+    public void PlaySound(string sfxName)
     {
-        if (!isSfxOn) return;
+        if (!TryGetSFX(sfxName, out var clip)) return;
 
-        AudioClip clip = _sfxClips[Random.Range(0, _sfxClips.Count)];//.Find(sfxClip => sfxClip.name == clipName);
-        if (clip == null)
-        {
-            Debug.LogWarning("SFX clip not found: " );
-            return;
-        }
-
-        _sfxSource.PlayOneShot(clip);
+        sfxAudioSource.PlayOneShot(clip);
     }
 
     // Toggle music on/off
     public void ToggleMusic()
     {
-        isMusicOn = !isMusicOn;
-        if (isMusicOn)
+        Logger.Log("Toggling Music");
+        IsMusicOn = !IsMusicOn;
+
+        SaveStates();
+
+        if (musicAudioSource == null)
         {
-            _musicSource.UnPause();
+            Logger.LogWarning("music audio source is null..");
+            return;
+        }
+
+        if (IsMusicOn)
+        {
+            if (!musicAudioSource.isPlaying) PlayMusic(AudioConstants.MUSIC_1);
+            else musicAudioSource.UnPause();
+            return;
         }
         else
         {
-            _musicSource.Pause();
+            musicAudioSource.Pause();
         }
     }
 
     // Toggle SFX on/off
-    public void ToggleSFX()
+    public void ToggleSound()
     {
-        isSfxOn = !isSfxOn;
-        if (!isSfxOn)
+        Logger.Log("Toggling Sound");
+        IsSFXOn = !IsSFXOn;
+
+        SaveStates();
+
+        if (sfxAudioSource == null)
         {
-            _sfxSource.Stop();
+            Logger.LogWarning("sound audio source is null..");
+            return;
         }
+
+        if (!IsSFXOn)
+        {
+            sfxAudioSource.Stop();
+        }
+    }
+
+    private void SaveStates()
+    {
+        MyPlayerPrefs.SetBool(PlayerPrefsKeys.IS_SOUND_ON, IsSFXOn);
+        MyPlayerPrefs.SetBool(PlayerPrefsKeys.IS_MUSIC_ON, IsMusicOn);
+    }
+
+    private void LoadStates()
+    {
+        IsSFXOn = MyPlayerPrefs.GetBool(PlayerPrefsKeys.IS_SOUND_ON, true);
+        IsMusicOn = MyPlayerPrefs.GetBool(PlayerPrefsKeys.IS_MUSIC_ON, true);
     }
 }
