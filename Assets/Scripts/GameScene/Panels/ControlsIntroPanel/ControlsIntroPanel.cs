@@ -9,6 +9,11 @@ public class ControlsIntroPanel : MonoBehaviour
     private WaitForSeconds waitTime;
     private void Start()
     {
+        ShowAndHideThisObject();
+    }
+
+    private void ShowAndHideThisObject()
+    {
         waitTime = new(_secondsToTurnOff);
 
         bool hasShownBefore = MyPlayerPrefs.GetBool(PlayerPrefsKeys.CONTROLS_INTRO_PLAYERPREFS, false);
@@ -33,6 +38,7 @@ public class ControlsIntroPanel : MonoBehaviour
 
     public void ControlIntroCloseButton()
     {
+        MyAnalytics.LogButtonEvent(AnalyticsEvents.ButtonName.CLOSE_CONTROLINTRO_GAMEMENU);
         MyPlayerPrefs.SetBool(PlayerPrefsKeys.CONTROLS_INTRO_PLAYERPREFS, true);
         this.gameObject.SetActive(false);
     }
