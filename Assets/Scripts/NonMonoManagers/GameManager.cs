@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using static Constants;
+using static Constants.AnalyticsEvents;
 
 
 public sealed class GameManager
@@ -18,7 +18,7 @@ public sealed class GameManager
     #endregion
 
 
-    public GameData GameData;
+    private GameData GameData { get; set; }
 
     public event Action OnGameOver;
     public bool IsGameOver { private set; get; } = false;
@@ -29,8 +29,10 @@ public sealed class GameManager
     {
         IsGameOver = false;
         GameData ??= new();
-        GameData?.LoadProgress();
+        GameData?.LoadProgress();       //Configurations are set up in the Firebase Manager..
         GetCurrentScore = 0;
+
+        FirebaseManager.Instance?.InitializeFirebase();
     }
 
     public void StartGame()
@@ -41,9 +43,12 @@ public sealed class GameManager
         GetCurrentScore = 0;
         currentScore = 0;
 
-        Debug.Log("Game Initialized " + GameData.Progress.Player.LastDistance +
+        Logger.Log("Game Initialized " + GameData.Progress.Player.LastDistance +
     "  ....... " + GameData.Progress.Player.BestDistance +
     " ...........  " + GameData.Progress.Player.TotalDistance);
+
+        MyAnalytics.LogEvent
+            (Events.GAMESTART_EVENT);
     }
 
     public void GameOver()
@@ -58,6 +63,8 @@ public sealed class GameManager
             "  ....... " + GameData.Progress.Player.BestDistance +
             " ...........  " + GameData.Progress.Player.TotalDistance);
         GameData?.SaveProgress();
+        MyAnalytics.LogEvent
+            (Events.GAMEOVER_EVENT, ParameterName.SCORE, GameData.Progress.Player.LastDistance.ToString());
     }
 
     public void UpdateScore()
@@ -65,7 +72,7 @@ public sealed class GameManager
         if (IsGameOver)
             return;
 
-        currentScore += Time.deltaTime * ScoreData.SCORE_FACTOR;       //Fetch from Remote Config
+        currentScore += Time.deltaTime * GetLevelConfigData()?.Score?.Factor ?? (float)new Score().Factor;
         GetCurrentScore = (int)currentScore;
     }
 
@@ -76,5 +83,30 @@ public sealed class GameManager
             return true;
         }
         return false;
+    }
+
+    public void UpdateRemoteConfigConfigurations(Configuration configuration)
+    {
+        GameData.Configuration = configuration;
+    }
+
+    public Player GetPlayerProgress()
+    {
+        return GameData?.Progress?.Player ?? new GameData().Progress.Player;
+    }
+
+    public LevelData GetLevelConfigData()
+    {
+        return GameData?.Configuration?.LevelData ?? new GameData().Configuration.LevelData;
+    }
+
+    public GameConfigData GetGameConfigData()
+    {
+        return GameData?.Configuration?.GameConfigData ?? new GameData().Configuration.GameConfigData;
+    }
+
+    public AdControl GetAdControlConfigData()
+    {
+        return GameData?.Configuration?.AdControl ?? new GameData().Configuration.AdControl;
     }
 }
