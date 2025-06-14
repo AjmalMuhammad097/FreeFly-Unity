@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Constants.AnalyticsEvents;
 
 public class GameController : MonoBehaviour
 {
@@ -6,5 +7,10 @@ public class GameController : MonoBehaviour
     {
         GameManager.Instance.StartGame();
         Debug.Log("Starting the Game...");
+    }
+
+    private void OnApplicationQuit()
+    {
+        MyAnalytics.LogEvent(Events.GAMECLOSE_EVENT);
     }
 }
