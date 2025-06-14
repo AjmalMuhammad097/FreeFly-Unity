@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "601776479226",
+    "project_id": "justypieprojects",
+    "storage_bucket": "justypieprojects.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:601776479226:android:24cfcbb3c3bb0454292243",
+        "android_client_info": {
+          "package_name": "com.justypiegames.freefly"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCH6wwmqUkXq5FHZcb2YfOIwK8VLpA3Or8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
