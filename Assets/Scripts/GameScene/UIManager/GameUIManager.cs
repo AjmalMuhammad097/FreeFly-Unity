@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using static Constants;
+using static Constants.AnalyticsEvents;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -29,6 +31,8 @@ public class GameUIManager : MonoBehaviour
 
     public void EnablePausePanel()
     {
+        MyAnalytics.LogButtonEvent(ButtonName.PAUSE_GAMEMENU);
+        AudioManager.Instance.PlaySound(AudioConstants.SFX_POSITIVE_BUTTON_2);
         _pausePanel.gameObject.SetActive(true);
     }
 
