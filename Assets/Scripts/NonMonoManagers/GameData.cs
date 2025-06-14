@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
+using static Constants;
 
 [Serializable]
 public class GameData
@@ -12,33 +14,26 @@ public class GameData
     {
         Progress = new();
         Configuration = new();
+        //LoadProgress();  //TODO check if i can remove this from other places?
     }
 
     public void SaveProgress()
     {
-        MyPlayerPrefs.SetJson(Constants.PlayerPrefsKeys.GAME_PROGRESS_PLAYERPREFS, Progress);
+        MyPlayerPrefs.SetJson(PlayerPrefsKeys.GAME_PROGRESS_PLAYERPREFS, Progress);
+        Debug.Log("Progress Saved Succesfully..");
     }
 
     public void LoadProgress()
     {
-        Progress = MyPlayerPrefs.GetJson<Progress>(Constants.PlayerPrefsKeys.GAME_PROGRESS_PLAYERPREFS, new());
-    }
-
-    public void SaveConfiguration()     //For Backup
-    {
-        MyPlayerPrefs.SetJson(Constants.PlayerPrefsKeys.GAME_CONFIGURATION_PLAYERPREFS, Configuration);
-    }
-
-    public void LoadConfiguration()
-    {
-        Configuration = MyPlayerPrefs.GetJson<Configuration>(Constants.PlayerPrefsKeys.GAME_CONFIGURATION_PLAYERPREFS, new());
+        Progress = MyPlayerPrefs.GetJson<Progress>(PlayerPrefsKeys.GAME_PROGRESS_PLAYERPREFS, new());
+        Logger.Log("Progress Loaded Succesfully..");
     }
 }
 
 [Serializable]
 public class Progress
 {
-    public int Version = 1;
+    public int Version = CurrentProgressVersion;
     public Player Player;
     public Progress()
     {
@@ -68,15 +63,27 @@ public class Player
     public int TotalDistance;
 }
 
+//Remote Config Datas
+#nullable enable
 [Serializable]
 public class Configuration
 {
-    public int Version = 1;
-    public LevelData LevelData;
-    public AdControl AdControl;
+    [JsonProperty("version")]
+    public int? Version = CurrentConfigurationVersion;
+
+    [JsonProperty("level_data")]
+    public LevelData? LevelData;
+
+    [JsonProperty("game_config_data")]
+    public GameConfigData? GameConfigData;
+
+    [JsonProperty("ad_control")]
+    public AdControl? AdControl;
+
     public Configuration()
     {
         LevelData = new();
+        GameConfigData = new();
         AdControl = new();
     }
 }
@@ -84,10 +91,18 @@ public class Configuration
 [Serializable]
 public class LevelData
 {
-    public Rocket Rocket;
-    public Platform Platform;
-    public Spawner Spawner;
-    public Score Score;
+    [JsonProperty("rocket")]
+    public Rocket? Rocket;
+
+    [JsonProperty("platform")]
+    public Platform? Platform;
+
+    [JsonProperty("spawner")]
+    public Spawner? Spawner;
+
+    [JsonProperty("score")]
+    public Score? Score;
+
     public LevelData()
     {
         Rocket = new();
@@ -100,42 +115,115 @@ public class LevelData
 [Serializable]
 public class Rocket
 {
-    public float Speed;
+    [JsonProperty("movement_speed")]
+    public float? MovementSpeed = RocketData.MOVEMENT_SPEED;
 }
 
 [Serializable]
 public class Platform
 {
-    public float Velocity;
-    public float Size;
+    [JsonProperty("push_force")]
+    public float? PushForce = PlatformData.PUSH_FORCE;
+
+    [JsonProperty("width")]
+    public float? Width = PlatformData.WIDTH;     //TODO set up later.
+
 }
 
 [Serializable]
 public class Spawner
 {
-    public float Interval;
-    public float SuperPlatformRandomness;
+    [JsonProperty("initial_platform_count")]
+    public int? InitialPlatformCount = SpawnerData.INITIAL_PLATFORM_COUNT;
+
+    [JsonProperty("min_vertical_distance")]
+    public float? MinVerticalDistance = SpawnerData.MIN_VERTICAL_DISTANCE;
+
+    [JsonProperty("max_vertical_distance")]
+    public float? MaxVerticalDistance = SpawnerData.MAX_VERTICAL_DISTANCE;
+
+    [JsonProperty("super_platform_randomness")]
+    public float? SuperPlatformRandomness = SpawnerData.SUPER_PLATFORM_RANDOMNESS;       //TODO Later after setting up the code.
 }
 
 [Serializable]
 public class Score
 {
-    public float Factor;
+    [JsonProperty("factor")]
+    public float? Factor = ScoreData.FACTOR;
+}
+
+[Serializable]
+public class GameConfigData
+{
+    [JsonProperty("url")]
+    public Url? Url;
+
+    [JsonProperty("texts")]
+    public Texts? Texts;
+
+    [JsonProperty("audio_settings")]
+    public AudioSettings? AudioSettings;
+
+    //Put other configs as needed.
+    public GameConfigData()
+    {
+        Url = new();
+        Texts = new();
+        AudioSettings = new();
+    }
+}
+
+public class Texts
+{
+    [JsonProperty("credits")]
+    public string? Credits = TextsData.CREDITS;
+}
+
+[Serializable]
+public class Url
+{
+    [JsonProperty("social_1")]
+    public string? Social1 = UrlData.SOCIAL_1;
+
+    [JsonProperty("social_2")]
+    public string? Social2 = UrlData.SOCIAL_2;
+
+    [JsonProperty("social_3")]
+    public string? Social3 = UrlData.SOCIAL_3;
+}
+
+[Serializable]
+public class AudioSettings
+{
+    [JsonProperty("music_volume")]
+    public float? MusicVolume = AudioSettingsData.MUSIC_VOLUME;
+
+    [JsonProperty("sound_volume")]
+    public float? SoundVolume = AudioSettingsData.SOUND_VOLUME;
 }
 
 [Serializable]
 public class AdControl
 {
-    public List<Rewarded> Rewarded;
-    public List<Interstitial> Interstitial;
-    public Banner Banner;
+    [JsonProperty("rewarded")]
+    public List<Rewarded>? Rewarded;
+
+    [JsonProperty("interstitial")]
+    public List<Interstitial>? Interstitial;
+
+    [JsonProperty("banner")]
+    public Banner? Banner;
 }
 
 [Serializable]
 public class Rewarded
 {
-    public string RewardType;
-    public int Count;
+    [JsonProperty("reward_type")]
+    public string? RewardType;
+
+    [JsonProperty("count")]
+    public int? Count;
 
     public Rewarded(string rewardType, int count)
     {
@@ -147,7 +235,8 @@ public class Rewarded
 [Serializable]
 public class Interstitial
 {
-    public List<int> ShowOnLevels;
+    [JsonProperty("show_on_levels")]
+    public List<int>? ShowOnLevels;
 
     public Interstitial(List<int> showOnLevels)
     {
@@ -160,3 +249,5 @@ public class Banner
 {
 
 }
+
+#nullable disable
