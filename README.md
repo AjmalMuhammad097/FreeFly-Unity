@@ -3,13 +3,18 @@
 Free Fly is a **mobile game** inspired by (https://github.com/JetLightStudio/Rocket_Ride_Unity3D) and revamped with new features, mechanics, and a unique twist.
 The game plays in a style similar to **Doodle Jump** — your character climbs upward by bouncing on platforms while avoiding obstacles and collecting rewards.
 
-  ## 🔹 Screenshots
+## 🔹 Screenshots
 
-![Screenshot 1](Screenshots/SS1.jpeg)
-![Screenshot 2](Screenshots/SS2.jpeg)
-![Screenshot 3](Screenshots/SS3.jpeg)
-![Screenshot 4](Screenshots/SS4.jpeg)
-![Screenshot 5](Screenshots/SS5.jpeg)
+<p align="center">
+  <img src="Screenshots/SS1.jpeg" width="30%" alt="Screenshot 1" />
+  <img src="Screenshots/SS2.jpeg" width="30%" alt="Screenshot 2" />
+  <img src="Screenshots/SS3.jpeg" width="30%" alt="Screenshot 3" />
+</p>
+
+<p align="center">
+  <img src="Screenshots/SS4.jpeg" width="30%" alt="Screenshot 4" />
+  <img src="Screenshots/SS5.jpeg" width="30%" alt="Screenshot 5" />
+</p>
 
 ## 🕹 Gameplay
 
