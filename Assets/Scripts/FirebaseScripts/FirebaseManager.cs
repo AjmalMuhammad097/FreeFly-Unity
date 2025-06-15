@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+#if !UNITY_WEBGL
 using Firebase;
 using Firebase.Analytics;
 using Firebase.Crashlytics;
 using Firebase.Extensions;
 using Firebase.RemoteConfig;
+#endif
 using Newtonsoft.Json;
 using UnityEngine;
 using static Constants;
@@ -35,6 +37,7 @@ public sealed class FirebaseManager
     public void InitializeFirebase()
     {
         if (isFirebaseInitialized) return;
+#if !UNITY_WEBGL
 
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
@@ -51,6 +54,7 @@ public sealed class FirebaseManager
             FetchRemoteConfigData();
             isFirebaseInitialized = true;
         });
+#endif
     }
 
     private void FetchRemoteConfigData()
@@ -67,6 +71,7 @@ public sealed class FirebaseManager
 
     private void SetDefaultValues()
     {
+#if !UNITY_WEBGL
         FirebaseRemoteConfig.DefaultInstance.SetDefaultsAsync(defaultDict).ContinueWithOnMainThread(task =>
         {
             var configDataJson = FirebaseRemoteConfig.DefaultInstance.GetValue(RemoteConfigKeys.GAME_CONFIGURATION_PLAYERPREFS).StringValue;
@@ -74,15 +79,20 @@ public sealed class FirebaseManager
 
             Debug.Log("Default Remote Config Values Setup Completed...");
         });
+#endif
     }
 
     private Task FetchDataAsync()
     {
+#if !UNITY_WEBGL
         Debug.Log("Fetching Remote Config data...");
         Task fetchTask = FirebaseRemoteConfig.DefaultInstance.FetchAsync(TimeSpan.Zero); //Timespan can be removed default timespan is 12 hours.
         return fetchTask.ContinueWithOnMainThread(FetchComplete);
+#endif
+        return null;
     }
 
+#if !UNITY_WEBGL
     private void FetchComplete(Task fetchTask)
     {
         //If it fails default value is already should be set...
@@ -99,13 +109,14 @@ public sealed class FirebaseManager
             Debug.LogError($"{nameof(FetchComplete)} was unsuccessful\n{nameof(info.LastFetchStatus)}: {info.LastFetchStatus}");
             return;
         }
-
         //Fetch completes here, But its not activated yet...
         ActivateUpdatedValues();
     }
+#endif
 
     private void ActivateUpdatedValues() //Call this activate the new values...
     {
+#if !UNITY_WEBGL
         // Fetch successful. Parameter values must be activated to use. //Activation happens after calling this...
         FirebaseRemoteConfig.DefaultInstance.ActivateAsync().ContinueWithOnMainThread(task =>
         {
@@ -122,8 +133,10 @@ public sealed class FirebaseManager
                 Debug.LogError("Activation failed.");
             }
         });
+#endif
     }
 
+#if !UNITY_WEBGL
     private void OnRemoteConfigValueUpdated(object sender, ConfigUpdateEventArgs e)
     {
         Debug.Log("Remote Config Value Just updated...");
@@ -141,6 +154,7 @@ public sealed class FirebaseManager
             Debug.Log("Remote Config Value Updated and the updated value is: " + configDataJson);
         });
     }
+#endif
 
     private void UpdateConfigurationValues(string configDataJson)
     {

@@ -1,6 +1,8 @@
 using System;
+#if !UNITY_WEBGL
 using Firebase.Analytics;
 using Firebase.Crashlytics;
+#endif
 
 public static class MyAnalytics
 {
@@ -8,7 +10,9 @@ public static class MyAnalytics
     {
         try
         {
+#if !UNITY_WEBGL
             FirebaseAnalytics.LogEvent(Logger.Log($"{eventName}"));
+#endif
         }
         catch (Exception e)
         {
@@ -21,10 +25,12 @@ public static class MyAnalytics
         Logger.Log($"{eventName} :: {parameterName} : {parameterValue}");
         try
         {
+#if !UNITY_WEBGL
             FirebaseAnalytics.LogEvent($"{eventName}", new Parameter[]
             {
                 new(parameterName, parameterValue)
             });
+#endif
         }
         catch (Exception e)
         {
@@ -36,7 +42,9 @@ public static class MyAnalytics
     {
         try
         {
+#if !UNITY_WEBGL
             FirebaseAnalytics.LogEvent(Logger.Log($"{eventName}"));
+#endif
         }
         catch (Exception e)
         {
@@ -48,8 +56,10 @@ public static class MyAnalytics
     {
         try
         {
+#if !UNITY_WEBGL
             Logger.LogCriticalError(e);
             Crashlytics.LogException(e);
+#endif
         }
         catch (Exception ex)
         {
