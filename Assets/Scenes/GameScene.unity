@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2964,6 +2963,7 @@ GameObject:
   - component: {fileID: 783020760}
   - component: {fileID: 783020762}
   - component: {fileID: 783020761}
+  - component: {fileID: 783020763}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3092,6 +3092,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783020759}
   m_CullTransparentMesh: 1
+--- !u!114 &783020763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783020759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d463dd0aa92a8942a5b43ee66c07b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: Press Left or Right to Move
 --- !u!1 &789613330
 GameObject:
   m_ObjectHideFlags: 0
@@ -8294,6 +8307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1921594062}
   - component: {fileID: 1921594063}
+  - component: {fileID: 1921594064}
   m_Layer: 5
   m_Name: ControlButtonHolders
   m_TagString: Untagged
@@ -8348,6 +8362,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1921594064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921594061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20d0356241ad27143a49e80c52f80a7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1938008819
 GameObject:
   m_ObjectHideFlags: 0
